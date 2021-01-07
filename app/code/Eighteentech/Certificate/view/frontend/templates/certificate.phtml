@@ -1,0 +1,55 @@
+<?php
+	$certificates = $block->getCertificationList();
+	if(is_object($certificates)):
+		
+?>
+		<div class="certificate-list">
+			<ul class="certificate-list-slider owl-carousel owl-theme"  id="certificate_slider">
+			 <?php foreach($certificates as $certificate):?>
+			         <?php if($certificate->getImage()!=''):?>
+						<li>			       
+							<div class="certificate-item-wrapper">
+								<div class="certificate-image">
+									<img src='<?php echo $block->getMediaURL().'certificate/'.$certificate->getImage(); ?>' alt="<?php echo $certificate->getTitle();?>"/>
+								</div>
+							 
+							</div>
+						</li>
+					<?php endif;?>
+			 <?php endforeach; ?>
+			 </ul>
+		</div>		
+		<script>
+		require(["jquery","owl_carousel"],function($) {
+            $(document).ready(function() {
+                $("#certificate_slider").owlCarousel({
+                    loop: true,
+					margin: 20,
+					dots: false,
+					nav: true,
+					responsive: {
+						0: {
+							items: 3,
+							margin: 20,
+							nav: true,
+							loop: false,
+						},
+						480: {
+							items: 4
+						},
+						768: {
+							items: 3
+						},
+						992: {
+							items: 3
+						},
+						1200: {
+							items: 4
+						}
+					}
+                });
+             });
+        });
+	
+	</script>    
+<?php endif;?>

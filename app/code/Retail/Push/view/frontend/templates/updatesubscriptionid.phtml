@@ -1,0 +1,162 @@
+<?php
+
+	$raa_serverurl =  $this->getServer();
+	if( (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443)) {
+		$raa_serverurl = "https://". $raa_serverurl.":8443";
+	} else {
+		$raa_serverurl = "http://". $raa_serverurl.":8080";
+	}
+	$enable_push = $this->getEnablePush();
+	if($enable_push != "true"){
+		return;
+	}
+	$raa_appid = $this->getAccount();
+
+	$workerFile = $this->getBaseUrl().'rasw.js';
+	$manifest_url= $block->getViewFileUrl('Retail_Push/js/manifest.json', array('_forced_secure' => true));
+	
+?>
+<?php if ($this->getCurrentCustomer()->getCustomer()->getId()): ?>
+    	<input type="hidden" id="hdn-update-subscription-raa-email" value="<?php echo $this->getCurrentCustomer()->getCustomer()->getEmail(); ?>">
+<?php endif; ?>
+       
+ <script type="text/javascript"> 
+       
+				 
+		 /*safari push End*/
+		var raa_internal_ip_popup ="";
+		function appendMenifest() {
+			var menifest_file_url = <?php echo '"'.$manifest_url.'"'; ?>;
+	        var raa_linl_tag = document.createElement('link');
+	        raa_linl_tag.setAttribute('rel','manifest');
+	        raa_linl_tag.setAttribute('href',menifest_file_url);	        
+			try {	
+				document.head.appendChild(raa_linl_tag);				
+			}
+			catch(err){
+				console.log("err from raa getCartData: " + JSON.stringify(err.message ));
+				document.getElementsByTagName('head')[0].appendChild(raa_linl_tag);
+			}
+		}
+
+		appendMenifest();
+		
+		function createCookies(name,value)
+	    {
+	    	var raa_date = new Date();
+	    	raa_date.setTime(raa_date.getTime() + (1*24*60*60*1000));
+	    	var raa_expires = "expires="+raa_date.toUTCString();
+	    	document.cookie = name + "=" + value + "; " + raa_expires;
+	    }
+		
+		function readCookie(name)
+		{
+			return (name = new RegExp('(?:^|;\\s*)' + ('' + name).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '=([^;]*)').exec(document.cookie)) && name[1];
+		}
+
+		function getInternalIP() {
+			
+		  	raa_internal_ip_popup = localStorage.getItem("rainternalip");
+			if(raa_internal_ip_popup == null || raa_internal_ip_popup == "") {
+		 		var d = new Date().getTime();
+			    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+				var r = (d + Math.random()*16)%16 | 0;
+				d = Math.floor(d/16);
+				return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+			    });
+			    raa_internal_ip_popup = uuid;
+			    localStorage.setItem("rainternalip",raa_internal_ip_popup);		
+			}
+		
+	  }
+		
+
+		    function sendSubscriptionData(service,jsonData,callBackfunc)
+		    {
+		    
+		 	 	var raa_appid = <?php echo '"'.$raa_appid.'"'; ?>;	
+		 	 	var raa_serverurl = <?php echo '"'.$raa_serverurl.'"'; ?>;	 	 	
+		    	var xhr = (window.XMLHttpRequest)?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+		    	var url = raa_serverurl +"/"+ service +"/"+ raa_appid;		
+				
+				xhr.open('POST', url, true);
+				xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				xhr.onload = function () {   
+		    		callBackfunc(xhr.responseText);    
+		    	};
+		    	xhr.onerror = function() {
+		    		console.log('Woops, there was an error makinsg the request.');
+		    	};
+
+		    	var data_str = JSON.stringify(jsonData);
+		    	data_str = data_str.replace(new RegExp("&amp;", "g"), "&"); 
+		    	data_str = data_str.replace(/\\/g, "");
+		    	data_str = data_str.replace(new RegExp("\"\\[", "g"), "\[");
+		    	data_str = data_str.replace(new RegExp("\\]\"", "g"), "\]");
+		    	var data = "request="+ encodeURIComponent(data_str);     
+		    	xhr.send(data);
+		    }
+		    
+		    function getSubscriptionData(){
+		        var data = {};
+		        
+		    	var raa_email = document.getElementById('hdn-update-subscription-raa-email');
+		    	if(raa_email != null ) {
+		    		data["email"] = raa_email.value;
+		    	}    	
+		    	return data;
+		    }
+		    
+		
+		    if ('serviceWorker' in navigator) {    
+			     
+		    	getInternalIP();
+		    	   
+	        	var worker_file_url = <?php echo '"'.$workerFile.'"'; ?>;        	
+	        	navigator.serviceWorker.register(worker_file_url).then(function() {
+	        		return navigator.serviceWorker.ready;
+	        	}).then(function(reg) {   	        		
+	        		if(Notification.permission === "granted") {  	          	
+	        			reg.pushManager.getSubscription().then(function(subscription) {  
+	            		if(subscription == null ) {        				  			  		        		
+	            			reg.pushManager.subscribe({userVisibleOnly: true}).then(function(sub) {  
+	            				var subscriptionid = sub.endpoint.split("/").pop();
+	            				console.log('subscriptionid:', subscriptionid); 
+	            				   	            				
+	            				var subscriptionData = getSubscriptionData();	    				
+	            				subscriptionData["endpoint"] = sub.endpoint;
+	            				subscriptionData["subscriptionid"] = subscriptionid;	            				
+	            				subscriptionData["internalip"] = raa_internal_ip_popup;
+	            				subscriptionData["subscription"] = sub;
+	            				subscriptionData["type"] = "update";
+	            				if(sub.endpoint.includes('mozilla')) {
+	            					subscriptionData["useragent"]= 'mozilla';
+	            				}
+	            				else if(sub.endpoint.includes('googleapis')) {
+	            					subscriptionData["useragent"]= 'chrome';
+	            				}
+	            				else { 
+	            					subscriptionData["useragent"]= '';
+	            				}    	            				         				
+	            				
+	            				sendSubscriptionData("RAService/push/api/add/subscription",subscriptionData, function(responseData){
+		            				console.log("update subscriptionid : " + JSON.stringify(responseData));	            						
+	            				});         				
+	            			});												
+	        			}
+	        			})
+	            	}       		
+	        	
+	        	}).catch(function(error) {
+	        		console.log('Service Worker error :', error);        		
+	        	});   	        
+		    }
+
+		    
+		
+</script>
+
+
+
+
+

@@ -1,0 +1,79 @@
+<?php $helper = $this->helper('Eighteentech\FooterSticky\Helper\Common'); ?>
+<div class="sicky-footer">
+	<div class="sicky-footer-content">
+		<ul>
+			<li class="home"><a href="<?= $block->getUrl()?>"><span><?= __('Home'); ?></span></a></li>
+			<li class="category"><a href="javascript:void(0)" class="mobile-category"> <span><?= __('Categories'); ?></span></a>
+			     <?php echo $this->getLayout()->createBlock("Magento\Theme\Block\Html\Topmenu")->setTemplate("Eighteentech_FooterSticky::category_menu.phtml")->toHtml(); ?>
+			
+			</li> 
+			<li class="stiky-footer-login" data-bind="scope: 'sticky_customer'">
+				<!-- ko ifnot: customer().fullname  -->
+				<a href="<?= $block->getUrl('customer/account/login');?>">
+					 <span><?= __('Login'); ?></span>
+				</a>
+				<!-- /ko -->
+				<!-- ko if: customer().fullname  -->
+				<a href="<?= $block->getUrl('customer/account');?>">
+					<span><?= __('Profile'); ?></span>
+				</a>
+				<!-- /ko -->
+				
+			</li>
+
+			<li class="checkout-cart">
+				<a href="<?= $block->getUrl('checkout/cart') ?>">
+					<span id="customer-items" data-bind="scope:'customer-loggedin'">
+						<!-- ko text: customer().fullname --><!-- /ko -->	
+					</span>
+					<span data-bind="scope:'my-item-count'">
+					    <!-- ko if: getCartParam('summary_count') >= 1 -->
+					        <span class="cartQtyCount" id="cart-items" data-bind="text: getCartParam('summary_count')"></span>
+					    <!-- /ko -->
+					    <!-- ko if: getCartParam('summary_count') == 0 -->
+					        <span class="empty"></span>
+					    <!-- /ko -->
+
+					</span>					
+					<span><?= __('Cart'); ?></span>
+				</a>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#cart-items": {
+            "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>
+        }
+    }
+</script>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "sticky_customer": {
+                    "component": "Magento_Customer/js/view/customer"
+                }
+            }
+        }
+    }
+}
+</script>
+<script type="text/javascript">
+	require(['jquery', 'domReady!'], function ($) {
+		$(document).ready(function() {
+			if ($(window).width() < 767) {
+				//setTimeout(function(){ $(".sicky-footer").fadeIn(500);}, 1000);
+			}
+			$(document).on('touch click', '.mobile-category', function(e){
+				var parent_li = $(this).closest('li');
+				$(parent_li).toggleClass('active');
+			});
+		});
+	});
+	
+</script>

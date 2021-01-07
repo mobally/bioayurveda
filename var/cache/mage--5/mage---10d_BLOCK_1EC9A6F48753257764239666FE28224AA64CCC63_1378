@@ -1,0 +1,25 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609908564;s:6:"expire";i:1609912164;s:4:"tags";s:63:"10d_BLOCK_HTML,10d_CAT_P_1378,10d_CAT_P,10d_CAT_P_1377,10d_MAGE";}
+  <div class="swatch-opt-1378" data-role="swatch-option-1378"></div><script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option-1378]": {
+            "Magento_Swatches/js/swatch-renderer": {
+                "selectorProduct": ".product-item-details",
+                "onlySwatches": true,
+                "enableControlLabel": false,
+                "numberToShow": 16,
+                "jsonConfig": {"attributes":{"138":{"id":"138","code":"unit","label":"Unit","options":[{"id":"5460","label":"500 GM","products":["1377"]}],"position":"0"}},"template":"$<%- data.price %>","currencyFormat":"$%s","optionPrices":{"1377":{"oldPrice":{"amount":18},"basePrice":{"amount":18},"finalPrice":{"amount":18},"tierPrices":[],"msrpPrice":{"amount":null}}},"priceFormat":{"pattern":"$%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},"prices":{"oldPrice":{"amount":18},"basePrice":{"amount":18},"finalPrice":{"amount":18}},"productId":"1378","chooseText":"Choose an Option...","images":[],"index":{"1377":{"138":"5460"}}},
+                "jsonSwatchConfig": {"138":{"5460":{"type":"0","value":"500 GM","label":"500 GM"},"additional_data":"{\"swatch_input_type\":\"text\",\"update_product_preview_image\":\"1\",\"use_product_image_for_swatch\":0}"}},
+                "mediaCallback": "https\u003A\u002F\u002Fwww.bioayurveda.com\u002Fswatches\u002Fajax\u002Fmedia\u002F",
+                "jsonSwatchImageSizeConfig": {"swatchImage":{"width":30,"height":20},"swatchThumb":{"height":90,"width":110}},
+                "showTooltip": 1            }
+        }
+    }</script><script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-1378]": {
+            "priceBox": {
+                "priceConfig": {
+                    "priceFormat": {"pattern":"$%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},
+                    "prices": {"oldPrice":{"amount":18},"basePrice":{"amount":18},"finalPrice":{"amount":18}}                }
+            }
+        }
+    }</script>

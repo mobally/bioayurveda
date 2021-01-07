@@ -1,0 +1,16 @@
+<?php $helper = $this->helper('Meetanshi\RestrictZip\Helper\Data'); ?>
+<?php if (trim($helper->getEnabled())) : ?>
+    <div id="popup-modal-restrict-zip">
+    </div>
+
+    <script type="text/javascript">
+        require(
+            [
+                'zipvalid'
+            ],
+            function() {
+                'use strict';
+            });
+    </script>
+
+<?php endif; ?>

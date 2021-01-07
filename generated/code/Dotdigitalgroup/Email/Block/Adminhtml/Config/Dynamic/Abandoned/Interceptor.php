@@ -1,0 +1,42 @@
+<?php
+namespace Dotdigitalgroup\Email\Block\Adminhtml\Config\Dynamic\Abandoned;
+
+/**
+ * Interceptor class for @see \Dotdigitalgroup\Email\Block\Adminhtml\Config\Dynamic\Abandoned
+ */
+class Interceptor extends \Dotdigitalgroup\Email\Block\Adminhtml\Config\Dynamic\Abandoned implements \Magento\Framework\Interception\InterceptorInterface
+{
+    use \Magento\Framework\Interception\Interceptor;
+
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Dotdigitalgroup\Email\Helper\Data $dataHelper)
+    {
+        $this->___init();
+        parent::__construct($context, $dataHelper);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'render');
+        if (!$pluginInfo) {
+            return parent::render($element);
+        } else {
+            return $this->___callPlugins('render', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function toHtml()
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'toHtml');
+        if (!$pluginInfo) {
+            return parent::toHtml();
+        } else {
+            return $this->___callPlugins('toHtml', func_get_args(), $pluginInfo);
+        }
+    }
+}

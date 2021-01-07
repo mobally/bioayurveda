@@ -1,0 +1,99 @@
+<?php 
+/********************************
+ * Add Hreflang in head section
+ * @ Eighteentech\Seo\Block\Head
+ */
+?>
+<?php
+ $url = $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+
+
+
+$baseUrl = $block->getBaseUrl();
+
+
+if($url==$baseUrl and substr($url, -1) == '/'){	
+
+	 $url = substr(trim($url),0,-1);	
+
+}
+
+
+   
+?>
+
+<?php if($block->getFullActionName() == 'catalog_product_view') { // product page ?>
+
+
+<?php } ?>
+
+<?php if($block->getFullActionName() == 'catalog_category_view') { // category page
+
+$category = $block->getObjectmanager()->get('Magento\Framework\Registry')->registry('current_category');
+
+   
+if($category->getMetaTitle() != ''){
+ $ogtitle = $category->getMetaTitle();
+}else{
+$ogtitle = $category->getName();
+}
+
+if($category->getMetaDescription() != ''){
+ $ogdes = $category->getMetaDescription();
+}else{
+$ogdes = $block->getDefaultMetaDescription();
+}
+
+
+
+ ?>
+
+<meta property="og:title" content="<?php echo $ogtitle; ?>" />
+<meta property="og:description" content="<?php echo $ogdes; ?>" />
+<meta property="og:url" content="<?php echo $url;  ?>" />
+
+
+<?php } ?>
+
+<?php if($block->getFullActionName() == 'cms_index_index') {  // home page ?>
+<link  rel="canonical" href="<?php echo $url;  ?>" />
+<meta property="og:title" content="<?php echo $block->getCmsPagetitle(); ?>" />
+<meta property="og:description" content="<?php echo $block->getCmsPageDescription(); ?>" />
+<meta property="og:url" content="<?php echo $url;  ?>" />
+
+<?php } ?>
+
+<?php if($block->getFullActionName() == 'cms_page_view') { // cms page ?>
+
+	<link  rel="canonical" href="<?php echo $url;  ?>" />
+<meta property="og:title" content="<?php echo $block->getCmsPagetitle(); ?>" />
+<meta property="og:description" content="<?php echo $block->getCmsPageDescription(); ?>" />
+<meta property="og:url" content="<?php echo $url;  ?>" />
+
+<?php } ?>
+
+<?php if($block->getFullActionName() == 'checkout_cart_index') { // cart page ?>
+
+
+<link  rel="canonical" href="<?php echo $url;  ?>" />
+<meta property="og:title" content="<?php echo __('Shopping Cart'); ?>" />
+<meta property="og:description" content="<?php echo $block->getDefaultMetaDescription(); ?>" />
+<meta property="og:url" content="<?php echo $url;  ?>" />
+
+<?php } ?>
+
+
+<?php if($block->getFullActionName() == 'checkout_index_index') { // checkout page ?>
+
+<link  rel="canonical" href="<?php echo $url;  ?>" />
+<meta property="og:title" content="<?php echo __('Checkout'); ?>" />
+<meta property="og:description" content="<?php echo $block->getDefaultMetaDescription(); ?>" />
+<meta property="og:url" content="<?php echo $url;  ?>" />
+
+<?php } ?>
+
+
+
+
+
+ 

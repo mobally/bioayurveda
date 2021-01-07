@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+  -->
+<!--suppress XmlUnboundNsPrefix -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Adds 2 content placeholders; 1 before and 1 after the search result -->
+        <referenceContainer name="content">
+            <!--  <block class="Nosto\Tagging\Block\Search" name="nosto.search" after="-"
+                   template="Nosto_Tagging::search.phtml"/>-->
+            <block class="Retail\Analytics\Block\Element" name="raa.page.search"
+                   after="search.result" template="Retail_Analytics::element.phtml">
+                <arguments>
+                    <argument name="div_id" xsi:type="string">9</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

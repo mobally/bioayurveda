@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--suppress XmlUnboundNsPrefix -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <Retail_Analytics>
+           <settings>          	
+                <version>0.1.15</version>                
+                <enabled>1</enabled>   
+                <server>enalito.in</server>
+                <resourceserver></resourceserver>              
+                <account>5f0819e7e4b029621fb0e301</account>
+                <resourcedir>bioayurveda</resourcedir>
+                <prediction>1</prediction>              
+                <imagetype>small_image</imagetype> 
+                <imagewidth>255</imagewidth> 
+                <imageheight>255</imageheight>
+                <gatrackingid></gatrackingid>                 
+                <attributes></attributes>
+                <developmentmodeemail></developmentmodeemail> 
+                <allowip></allowip> 
+                <issynchronousreco>false</issynchronousreco>        
+                <enablepush>false</enablepush>           
+                <enablemyshop>false</enablemyshop>                            
+            </settings>  
+        </Retail_Analytics>
+    </default>
+</config>

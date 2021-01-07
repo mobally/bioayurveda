@@ -1,0 +1,35 @@
+<?php
+/**
+ * Magento
+
+ */
+?>
+
+<?php
+/**
+
+ */
+$items = $this->getRaaCartItems();
+?>
+
+<?php if (!empty($items)): ?>
+<!-- Raa Cart Tagging -->
+<div class="raa_cart" style="display:none">
+    <?php foreach ($items as $item): ?>
+    <?php $product = $item->getProduct(); ?>
+    <div class="line_item">    	
+    	<span class="raa_cartid"><?php echo $item->getQuoteId(); ?></span> 
+    	<span class="raa_entity_id" data-key="true"><?php echo $item->getProductId(); ?></span>
+        <span class="raa_product_id" data-key="true"><?php echo $item->getProductId(); ?></span>
+        <span class="raa_sku"><?php //echo $product->getSku(); ?></span>
+        <span class="raa_quantity"><?php echo (int)($item->getQty()); ?></span>
+        <span class="raa_name"><?php //echo $this->escapeHtml($item->getName()); ?></span> 
+        <span class="raa_price"><?php echo $item->getPriceInclTax(); ?></span> 
+        <span class="raa_store_currency_code"><?php echo $this->getCurrentCurrencyCode(); ?></span> 
+     	<span class="raa_base_currency_code"><?php echo $this->getBaseCurrencyCode(); ?></span> 
+        <span class="raa_url"><?php echo $product->getProductUrl(); ?></span> 
+        <span class="raa_typeid"><?php echo $product->getTypeID(); ?></span>    
+    </div>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>

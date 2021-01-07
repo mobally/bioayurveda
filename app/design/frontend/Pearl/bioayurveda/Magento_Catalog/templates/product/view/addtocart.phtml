@@ -1,0 +1,96 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php if ($_product->isSaleable()): ?>
+<div class="box-tocart">
+    <div class="fieldset">
+		
+	<?php if ($block->shouldRenderQuantity()): ?>
+			<div class="field qty">
+				<label class="label" for="qty"><span><?= /* @escapeNotVerified */ __('Qty') ?></span></label>
+				<div class="control">
+					<div class="dec button" id="plusminus-button"><span class="up">-</span></div>
+					<input type="number"
+						   name="qty"
+						   id="qty"
+						   value="<?= /* @escapeNotVerified */ $block->getProductDefaultQty() * 1 ?>"
+						   title="<?= /* @escapeNotVerified */ __('Qty') ?>"
+						   class="input-text qty"
+						   data-validate="<?= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+						   />
+					<div class="inc button" id="plusminus-button"><span class="up">+</span></div>
+				</div>
+			</div>
+	<?php endif; ?>
+        
+        
+        <div class="actions">
+            <button type="submit"
+                    title="<?= /* @escapeNotVerified */ $buttonTitle ?>"
+                    class="action primary tocart"
+                    id="product-addtocart-button" disabled>
+                <span><?= /* @escapeNotVerified */ $buttonTitle ?></span>
+            </button>
+            <?= $block->getChildHtml('', true) ?>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/js/validate-product": {}
+        }
+    }
+</script>
+<script>    
+require(['jquery'],function($){
+  $(".button").on("click", function() {
+	//console.log('minusplus');
+    var minuplus = $(this);
+    var oldValue = minuplus.parents('.field.qty .control').find("input").val();
+    if (minuplus.text() == "+") {
+  	  var newVal = parseFloat(oldValue) + 1;
+  	} else {
+      if (oldValue > 1) {
+        var newVal = parseFloat(oldValue) - 1;
+	    } else {
+        newVal = 1;
+      }
+	  }
+    minuplus.parents('.field.qty .control').find("input").val(newVal);
+  });	
+});
+</script>
+<script> 
+     require([ 
+         'jquery', 
+         'mage/mage', 
+         'Magento_Catalog/product/view/validation', 
+         'Magento_Catalog/js/catalog-add-to-cart' 
+     ], function ($) { 
+         'use strict'; 
+  
+         $('#product_addtocart_form').mage('validation', { 
+             radioCheckboxClosest: '.nested', 
+             submitHandler: function (form) { 
+                 var widget = $(form).catalogAddToCart({ 
+                     bindSubmit: false 
+                 }); 
+  
+                 widget.catalogAddToCart('submitForm', $(form)); 
+  
+                 return false; 
+             } 
+         }); 
+     }); 
+ </script> 

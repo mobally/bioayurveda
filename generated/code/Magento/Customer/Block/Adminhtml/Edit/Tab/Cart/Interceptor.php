@@ -1,0 +1,29 @@
+<?php
+namespace Magento\Customer\Block\Adminhtml\Edit\Tab\Cart;
+
+/**
+ * Interceptor class for @see \Magento\Customer\Block\Adminhtml\Edit\Tab\Cart
+ */
+class Interceptor extends \Magento\Customer\Block\Adminhtml\Edit\Tab\Cart implements \Magento\Framework\Interception\InterceptorInterface
+{
+    use \Magento\Framework\Interception\Interceptor;
+
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Backend\Helper\Data $backendHelper, \Magento\Quote\Api\CartRepositoryInterface $quoteRepository, \Magento\Framework\Data\CollectionFactory $dataCollectionFactory, \Magento\Framework\Registry $coreRegistry, \Magento\Quote\Model\QuoteFactory $quoteFactory, array $data = [])
+    {
+        $this->___init();
+        parent::__construct($context, $backendHelper, $quoteRepository, $dataCollectionFactory, $coreRegistry, $quoteFactory, $data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function toHtml()
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'toHtml');
+        if (!$pluginInfo) {
+            return parent::toHtml();
+        } else {
+            return $this->___callPlugins('toHtml', func_get_args(), $pluginInfo);
+        }
+    }
+}

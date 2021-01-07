@@ -1,0 +1,89 @@
+<?php
+	$product = $block->getCurrentProduct();
+	if(is_object($product)):
+		$ingredientValue = $product->getIngredient();
+		if($ingredientValue!=''):
+			$ingredientList = explode(',',$ingredientValue);
+			if(count($ingredientList)):			
+?>
+				<div class="ingredients-list">
+					 <?php $i=0; foreach($ingredientList as $ingredient): $i++;?>
+						   <?php $ingObject = $block->getIngredientData($ingredient);?>
+						   <?php if(is_object($ingObject)): ?>						   
+							<div class="ingredient-item-wrapper">
+								<?php $imagePath = $block->getMediaPath().'/ingredient/'.$ingObject->getImage();									
+								?>
+								<?php if(file_exists($imagePath) && $ingObject->getImage()!=''):?>
+										 <div class="ingredient-image">									 
+													<img src='<?php echo $block->getMediaURL().'ingredient/'.$ingObject->getImage(); ?>' width="150px"/>										
+										  </div>
+								  <?php endif;?>
+								  <div class="ingredient-detail">
+									  <?php /*<span class="ingredient-title"><?php echo $ingObject->getTitle()?></span> */?>
+									  <div class="ingredient-content">
+
+<?php
+$content = $ingObject->getContent();
+
+$strlen = strlen($content);
+
+if (strlen($content) > 550) {
+	$trimstring = substr($content, 0, 550);
+} else {
+	$trimstring = $content;
+}
+echo $trimstring;
+
+$trimstring1 = substr($content, 550, $strlen);
+if (strlen($content) > 550) {
+echo '<span id="dots_'.$i.'">...</span><span style="display: none;" id="more_'.$i.'">'.$trimstring1.'</span>';
+
+?>
+<button onclick="myFunction('<?php echo $i; ?>')" id="myBtn_<?php echo $i; ?>"><?php echo __('Read more'); ?></button>
+<?php } ?>
+											  <?php //echo $ingObject->getContent()?>
+
+									  </div>
+								  </div>
+							</div>
+							<?php endif;?>
+					 <?php endforeach; ?>
+				</div>
+			<?php endif;?>
+		<?php endif;?>
+	<?php endif;?>
+
+
+
+	<script type="text/javascript">
+    require([
+       'jquery'      
+   ], function($){
+
+    $(document).ready(function(){
+
+
+
+	 myFunction = function(id){
+
+
+  var dots = document.getElementById("dots_"+id);
+  var moreText = document.getElementById("more_"+id);
+  var btnText = document.getElementById("myBtn_"+id);
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}
+
+  });
+
+   });
+   
+</script>

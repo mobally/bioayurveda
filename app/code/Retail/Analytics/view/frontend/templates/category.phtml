@@ -1,0 +1,9 @@
+<?php
+$current_category = $this->getRaaCategoryId();
+if (!empty($current_category)){
+?>
+<!-- Raa Category Tagging -->
+<div class="raa_category" style="display:none">
+	<span class="raa_category_id" data-key="true"><?php echo $current_category; ?></span>	
+</div>
+<?php }?>

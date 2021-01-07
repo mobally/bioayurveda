@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Eighteentech_Certificate::certificate" title="Certificate" resource="Eighteentech_Certificate::certificate" parent="Eighteentech_Core::core" module="Eighteentech_Certificate" sortOrder="60"/>        
+        <add id="Eighteentech_Certificate::certificate_manage" title="Manage Certificate" module="Eighteentech_Certificate" sortOrder="10" parent="Eighteentech_Certificate::certificate" action="certificate/index/" resource="Eighteentech_Certificate::certificate_manage"/>        
+    </menu>
+</config>

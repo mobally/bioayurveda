@@ -1,0 +1,25 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609908726;s:6:"expire";i:1609912326;s:4:"tags";s:89:"10d_BLOCK_HTML,10d_CAT_P_611,10d_CAT_P,10d_CAT_P_608,10d_CAT_P_609,10d_CAT_P_610,10d_MAGE";}
+  <div class="swatch-opt-611" data-role="swatch-option-611"></div><script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option-611]": {
+            "Magento_Swatches/js/swatch-renderer": {
+                "selectorProduct": ".product-item-details",
+                "onlySwatches": true,
+                "enableControlLabel": false,
+                "numberToShow": 16,
+                "jsonConfig": {"attributes":{"138":{"id":"138","code":"unit","label":"Unit","options":[{"id":"5466","label":"10 TABLETS","products":["608"]},{"id":"5467","label":"40 TABLETS","products":["609"]},{"id":"5468","label":"90 TABLETS","products":["610"]}],"position":"0"}},"template":"\u20b9<%- data.price %>","currencyFormat":"\u20b9%s","optionPrices":{"608":{"oldPrice":{"amount":329},"basePrice":{"amount":329},"finalPrice":{"amount":329},"tierPrices":[],"msrpPrice":{"amount":null}},"609":{"oldPrice":{"amount":499},"basePrice":{"amount":499},"finalPrice":{"amount":499},"tierPrices":[],"msrpPrice":{"amount":null}},"610":{"oldPrice":{"amount":999},"basePrice":{"amount":999},"finalPrice":{"amount":999},"tierPrices":[],"msrpPrice":{"amount":null}}},"priceFormat":{"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},"prices":{"oldPrice":{"amount":329},"basePrice":{"amount":329},"finalPrice":{"amount":329}},"productId":"611","chooseText":"Choose an Option...","images":[],"index":{"608":{"138":"5466"},"609":{"138":"5467"},"610":{"138":"5468"}},"preSelectedGallery":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/b\/i\/bio-painrelief-1_3_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/b\/i\/bio-painrelief-1_3_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/b\/i\/bio-painrelief-1_3_1.jpg","position":"1","isMain":true,"gallery":{"2464":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/b\/i\/bio-painrelief-1_3_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/b\/i\/bio-painrelief-1_3_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/b\/i\/bio-painrelief-1_3_1.jpg","position":"1","isMain":true},"2465":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/b\/i\/bio-painrelief-2_2_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/b\/i\/bio-painrelief-2_2_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/b\/i\/bio-painrelief-2_2_1.jpg","position":"2","isMain":false},"2466":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/b\/i\/bio-painrelief-3_2_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/b\/i\/bio-painrelief-3_2_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/b\/i\/bio-painrelief-3_2_1.jpg","position":"3","isMain":false}}}},
+                "jsonSwatchConfig": {"138":{"5466":{"type":"0","value":"10 TABLETS","label":"10 TABLETS"},"5467":{"type":"0","value":"40 TABLETS","label":"40 TABLETS"},"5468":{"type":"0","value":"90 TABLETS","label":"90 TABLETS"},"additional_data":"{\"swatch_input_type\":\"text\",\"update_product_preview_image\":\"1\",\"use_product_image_for_swatch\":0}"}},
+                "mediaCallback": "https\u003A\u002F\u002Fwww.bioayurveda.in\u002Fswatches\u002Fajax\u002Fmedia\u002F",
+                "jsonSwatchImageSizeConfig": {"swatchImage":{"width":22,"height":20},"swatchThumb":{"height":90,"width":110}},
+                "showTooltip": 1            }
+        }
+    }</script><script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-611]": {
+            "priceBox": {
+                "priceConfig": {
+                    "priceFormat": {"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},
+                    "prices": {"oldPrice":{"amount":329},"basePrice":{"amount":329},"finalPrice":{"amount":329}}                }
+            }
+        }
+    }</script>

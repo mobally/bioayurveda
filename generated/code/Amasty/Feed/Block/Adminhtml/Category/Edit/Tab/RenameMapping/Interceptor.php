@@ -1,0 +1,29 @@
+<?php
+namespace Amasty\Feed\Block\Adminhtml\Category\Edit\Tab\RenameMapping;
+
+/**
+ * Interceptor class for @see \Amasty\Feed\Block\Adminhtml\Category\Edit\Tab\RenameMapping
+ */
+class Interceptor extends \Amasty\Feed\Block\Adminhtml\Category\Edit\Tab\RenameMapping implements \Magento\Framework\Interception\InterceptorInterface
+{
+    use \Magento\Framework\Interception\Interceptor;
+
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Catalog\Model\ResourceModel\Category\Tree $categoryTree, \Magento\Framework\Registry $registry, \Magento\Catalog\Model\CategoryFactory $categoryFactory, array $data = [])
+    {
+        $this->___init();
+        parent::__construct($context, $categoryTree, $registry, $categoryFactory, $data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function toHtml()
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'toHtml');
+        if (!$pluginInfo) {
+            return parent::toHtml();
+        } else {
+            return $this->___callPlugins('toHtml', func_get_args(), $pluginInfo);
+        }
+    }
+}

@@ -1,0 +1,25 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609908697;s:6:"expire";i:1609912297;s:4:"tags";s:85:"10d_BLOCK_HTML,10d_CAT_P_51,10d_CAT_P,10d_CAT_P_48,10d_CAT_P_49,10d_CAT_P_50,10d_MAGE";}
+  <div class="swatch-opt-51" data-role="swatch-option-51"></div><script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option-51]": {
+            "Magento_Swatches/js/swatch-renderer": {
+                "selectorProduct": ".product-item-details",
+                "onlySwatches": true,
+                "enableControlLabel": false,
+                "numberToShow": 16,
+                "jsonConfig": {"attributes":{"138":{"id":"138","code":"unit","label":"Unit","options":[{"id":"5458","label":"250 GM","products":["48"]},{"id":"5472","label":"400 GM","products":["49"]},{"id":"5461","label":"750 GM","products":["50"]}],"position":"0"}},"template":"\u20b9<%- data.price %>","currencyFormat":"\u20b9%s","optionPrices":{"48":{"oldPrice":{"amount":1799},"basePrice":{"amount":1799},"finalPrice":{"amount":1799},"tierPrices":[],"msrpPrice":{"amount":null}},"49":{"oldPrice":{"amount":2699},"basePrice":{"amount":2699},"finalPrice":{"amount":2699},"tierPrices":[],"msrpPrice":{"amount":null}},"50":{"oldPrice":{"amount":3899},"basePrice":{"amount":3899},"finalPrice":{"amount":3899},"tierPrices":[],"msrpPrice":{"amount":null}}},"priceFormat":{"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},"prices":{"oldPrice":{"amount":1799},"basePrice":{"amount":1799},"finalPrice":{"amount":1799}},"productId":"51","chooseText":"Choose an Option...","images":[],"index":{"48":{"138":"5458"},"49":{"138":"5472"},"50":{"138":"5461"}}},
+                "jsonSwatchConfig": {"138":{"5458":{"type":"0","value":"250 GM","label":"250 GM"},"5472":{"type":"0","value":"400 GM","label":"400 GM"},"5461":{"type":"0","value":"750 GM","label":"750 GM"},"additional_data":"{\"swatch_input_type\":\"text\",\"update_product_preview_image\":\"1\",\"use_product_image_for_swatch\":0}"}},
+                "mediaCallback": "https\u003A\u002F\u002Fwww.bioayurveda.in\u002Fswatches\u002Fajax\u002Fmedia\u002F",
+                "jsonSwatchImageSizeConfig": {"swatchImage":{"width":22,"height":20},"swatchThumb":{"height":90,"width":110}},
+                "showTooltip": 1            }
+        }
+    }</script><script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-51]": {
+            "priceBox": {
+                "priceConfig": {
+                    "priceFormat": {"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},
+                    "prices": {"oldPrice":{"amount":1799},"basePrice":{"amount":1799},"finalPrice":{"amount":1799}}                }
+            }
+        }
+    }</script>

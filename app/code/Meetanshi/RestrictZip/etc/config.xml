@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <restrict_zip>
+            <general>
+                <enabled>0</enabled>
+                <show_delivery_time>1</show_delivery_time>
+                <checker_mag>Check Delivery is available in your area:</checker_mag>
+                <delivery_availability_msg>Delivery is available in your area.</delivery_availability_msg>
+                <delivery_unavailability_msg>Delivery is not available in your area.</delivery_unavailability_msg>
+                <delete_zip>0</delete_zip>
+            </general>
+        </restrict_zip>
+    </default>
+</config>

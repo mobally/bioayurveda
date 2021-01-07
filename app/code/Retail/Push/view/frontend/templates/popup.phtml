@@ -1,0 +1,424 @@
+<?php
+
+	$enable_push = $this->getEnablePush();
+	if($enable_push != "true"){
+		return;
+	}
+	$webPushId = $this->getWebPushId();
+	if($webPushId =="")
+		$webPushId = "web.com.retailreco.rtr";
+	
+	$raaDate = date('Y-m-d');
+	/*Start Check page is home page*/
+	$routeName = $this->getRequest()->getFullActionName();
+	if($routeName == 'cms_index_index') {
+		$pushonhome = $this->getPushOnHome();
+		if($pushonhome!="true")
+		{
+			return;
+		}
+	} 
+	/*End Check page is home page*/
+	
+	$developmentmodeemail = $this->getDevelopmentmodeEmail();
+	if($developmentmodeemail!="")
+	{
+		if ($this->getCurrentCustomer()->getCustomer()->getEmail()!=$developmentmodeemail){
+			return;
+		}
+	}
+	$internal_ip = $this->getInternalIp();
+	$raa_serverurl =  $this->getServer();
+	if( (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443)) {
+		$raa_serverurl = "https://". $raa_serverurl.":8443";
+	} else {
+		$raa_serverurl = "https://". $raa_serverurl.":8443";
+	}
+
+	/* check if server responding properly*/
+	/*if (@fopen($raa_serverurl,"r")===false) {
+		return;
+	}*/
+	
+	$raa_appid = $this->getAccount();
+	$raa_server = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? "https://".$this->getServer().':8443' : "https://".$this->getServer().':8443';
+
+	$workerFile = $this->getBaseUrl().'rasw.js';
+
+	$manifest_url= $block->getViewFileUrl('Retail_Push/js/manifest.json', array('_forced_secure' => true));
+	$raa_subscribe_url= $block->getUrl("rapush/index/subscribe", array('_forced_secure' => true));
+	$raa_resourceserver =  $this->getResourceServer();
+	if($raa_resourceserver=="")
+		return;
+	if( (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443)) {
+		$raa_resourceserver = "https://". $raa_resourceserver.":8443";
+	} else {
+		$raa_resourceserver = "https://". $raa_resourceserver.":8443";
+	}
+	
+	
+	$raa_resourcedir =  $this->getResourcedir();
+	$raa_resourcedir = ($raa_resourcedir == "")?"default":$raa_resourcedir;
+	$raa_client_resourceurl = $raa_resourceserver . "/ralib/magento/".$raa_resourcedir."/push/";
+	$raa_framework_resourceurl = $raa_resourceserver . "/ralib/magento/push/";
+	$gotonotification_css_url= $raa_client_resourceurl.'css/subscriptionpopup.css?date='.$raaDate;
+
+?>
+
+<!-- gotonotification css-->
+<link media="all" href="<?php echo $gotonotification_css_url?>" type="text/css" rel="stylesheet">
+
+
+<div id="raa-enable-push-popup" style="display: none;">
+
+<input type="hidden" id="hdn-internal-ip-popup" value="<?php echo $internal_ip; ?>">
+<input type="hidden" id="routeName" value="<?php echo $routeName; ?>">
+<?php if ($this->getCurrentCustomer()->getCustomer()->getId()): ?>
+<input type="hidden" id="hdn-raa-email" value="<?php echo $this->getCurrentCustomer()->getCustomer()->getEmail(); ?>">
+<?php endif; ?>
+
+<!-- raapopup -->
+<div class="raapopup-notif raapopup-animated raapopup-bounceInDown " id="raapopup-subscription-template" style="display: none;">
+<div class="raapopup-wrapper">
+<div id="raapopup-subscription-template-content">
+<div class="raapopup-client-img--wrap">
+<img class="raapopup-client-img--img" alt="rrjewels" src="">
+</div>
+<div class="raapopup-text--wrap">
+<div class="raapopup-tw-text--main"></div>
+<div class="raapopup-tw-text--para"></div>
+</div>
+</div>
+<div class="raapopup-btn--wrap">
+<button class="raapopup-btn--btn raapopup-btn--close" onClick="suspendRAAPush();">No Thanks</button>
+<a class="raapopup-btn--btn raapopup-btn--allow" onClick="subscribeRAAPush(); return false;">Yes Please</a></div>
+</div>
+</div>
+</div>
+		
+
+ <script type="text/javascript">
+ var raa_internal_ip_popup ="";
+ function getSubscriptionTemplate() {	 
+		 try {	
+			var service	= "RAService/push/api/get/subscription/template";
+		    var raa_appid = <?php echo '"'.$raa_appid.'"'; ?>;
+		 	var raa_serverurl = <?php echo '"'.$raa_serverurl.'"'; ?>;
+	  	    var xhr = (window.XMLHttpRequest)?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+			var url = raa_serverurl +"/"+ service +"/"+ raa_appid;	
+			xhr.open('GET', url, true);		
+			xhr.onload = function () {   				
+				var responseData = JSON.parse(xhr.responseText);			
+	  			if(responseData.hasOwnProperty("html")){
+	  				document.getElementById("raapopup-subscription-template-content").innerHTML = responseData["html"];	  				
+	  			}   
+	  			document.getElementById("raapopup-subscription-template").style.display = "block";
+		  	};
+		  	xhr.onerror = function() {
+		  		document.getElementById("raapopup-subscription-template").style.display = "block";
+		  		console.log('Woops, there was an error makinsg the request.');
+		  	};   
+		  	xhr.send();	 
+	
+		 }
+		catch(err){
+			document.getElementById("raapopup-subscription-template").style.display = "block";
+			console.log("err from raa getSubscriptionTemplate: " + JSON.stringify(err.message ));
+			
+		} 
+	}
+
+ 	
+        
+ 		//var raa_internal_ip_popup = document.getElementById('hdn-internal-ip-popup').value; 
+		function appendMenifest() {
+			var menifest_file_url = <?php echo '"'.$manifest_url.'"'; ?>;
+	        var raa_linl_tag = document.createElement('link');
+	        raa_linl_tag.setAttribute('rel','manifest');
+	        raa_linl_tag.setAttribute('href',menifest_file_url);	        
+			try {	
+				document.head.appendChild(raa_linl_tag);				
+			}
+			catch(err){
+				console.log("err from raa appendMenifest: " + JSON.stringify(err.message ));
+				document.getElementsByTagName('head')[0].appendChild(raa_linl_tag);
+			}
+		}
+		appendMenifest();
+
+		
+		
+		function createCookies(name,value)
+	    {
+	    	var raa_date = new Date();
+	    	raa_date.setTime(raa_date.getTime() + (1*24*60*60*1000));
+	    	var raa_expires = "expires="+raa_date.toUTCString();
+	    	document.cookie = name + "=" + value + "; " + raa_expires;
+	    }
+		
+		function readCookie(name)
+		{
+			return (name = new RegExp('(?:^|;\\s*)' + ('' + name).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '=([^;]*)').exec(document.cookie)) && name[1];
+		}
+
+		 function getInternalIP() {
+			
+			  	raa_internal_ip_popup = localStorage.getItem("rainternalip");
+				if(raa_internal_ip_popup == null || raa_internal_ip_popup == "") {
+			 		var d = new Date().getTime();
+				    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+					var r = (d + Math.random()*16)%16 | 0;
+					d = Math.floor(d/16);
+					return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+				    });
+
+				    raa_internal_ip_popup = uuid;
+				    localStorage.setItem("rainternalip",raa_internal_ip_popup);		
+				}
+			
+		  }
+
+		 getInternalIP();
+		
+
+		 function sendSubscriptionData(service,jsonData,callBackfunc)
+		    {
+		    
+		 	 	var raa_appid = <?php echo '"'.$raa_appid.'"'; ?>;
+		 	 	var raa_serverurl = <?php echo '"'.$raa_serverurl.'"'; ?>;
+		    	var xhr = (window.XMLHttpRequest)?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+				var url = raa_serverurl +"/"+ service +"/"+ raa_appid;	
+				xhr.open('POST', url, true);
+				xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				xhr.onload = function () {   
+		    		callBackfunc(xhr.responseText);    
+		    	};
+		    	xhr.onerror = function() {
+		    		console.log('Woops, there was an error makinsg the request.');
+		    	};
+
+		    	var data_str = JSON.stringify(jsonData);
+		    	data_str = data_str.replace(new RegExp("&amp;", "g"), "&"); 
+		    	data_str = data_str.replace(/\\/g, "");
+		    	data_str = data_str.replace(new RegExp("\"\\[", "g"), "\[");
+		    	data_str = data_str.replace(new RegExp("\\]\"", "g"), "\]");
+		    	var data = "request="+ encodeURIComponent(data_str);     
+		    	xhr.send(data);
+		    }
+		    
+		    function getSubscriptionData(){
+		        var data = {};
+		        
+		    	var raa_email = document.getElementById('hdn-raa-email-popup');
+		    	if(raa_email != null ) {
+		    		data["email"] = raa_email.value;
+		    	} 	
+		    	if (navigator.userAgent.match(/Tablet|iPad/i))
+				{
+				    data["device"] = "tablet";
+				} 
+				else if(navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) )
+				{
+				     data["device"] = "mobile";
+				} 
+				else 
+				{
+				     data["device"] = "desktop";
+				}	    		    			    	  	
+		    	data["internalip"] = raa_internal_ip_popup;   				
+		    		
+		    	return data;
+		    }
+		
+		 
+		function suspendRAAPush() {
+			document.getElementById('raa-enable-push-popup').style.display = 'none';	
+			createCookies("suspendraapush",true,1);		
+		}	
+		/*safari push start*/
+		var checkRemotePermission = function (permissionData) {
+			if (permissionData.permission === 'default') {
+					var raa_appid = <?php echo '"'.$raa_appid.'"'; ?>;
+					var raa_serverurl = <?php echo '"'.$raa_serverurl.'"'; ?>;
+					var raa_webpushid = <?php echo '"'.$webPushId.'"'; ?>;
+					
+				 	window.safari.pushNotification.requestPermission(
+		        	raa_serverurl+'/RAService/push/api', // The web service URL.
+		        	raa_webpushid,     // The Website Push ID.
+		            {"appid":raa_appid,"webpushid":raa_webpushid},         // Data used to help you identify the user.
+		            checkRemotePermission          // The callback function.
+			        );
+			    }
+		     else if (permissionData.permission === 'granted') {
+					var subscriptionData = getSubscriptionData();	    				
+	  				subscriptionData["subscriptionid"] = permissionData.deviceToken ;			    				
+	  				subscriptionData["useragent"]= 'safari';
+	  				sendSubscriptionData("RAService/push/api/add/subscription",subscriptionData, function(responseData){  
+ 					var response = (typeof responseData == "string")?JSON.parse(responseData):responseData;
+ 					if(response==true)
+					{
+ 						if(typeof setEmptyTemplate == 'function')
+ 						{
+							setEmptyTemplate("");
+							raaGetActivityFeeds();
+ 						}	
+ 						else
+						{
+ 							var raanotificationicon = document.getElementById('raanotificationicon');
+ 							if(typeof raanotificationicon != 'undefined' && raanotificationicon!=null){
+ 								raanotificationicon.click();
+ 							}
+						}
+					}
+		    		if(response.hasOwnProperty("html")) {
+			    		raajQuery("#raa-default-model-content").empty().append(response["html"]);
+						raajQuery("#raa-default-model").appendTo("body").modal('show');
+		    		}
+			    		
+ 				});   
+			   }
+			};
+			/*safari push end*/
+			
+		function subscribeRAAPush() {
+
+			document.getElementById('raa-enable-push-popup').style.display = 'none';	
+			/*safari push else google push*/
+			  if ('safari' in window && 'pushNotification' in window.safari) {
+				var raa_webpushid = <?php echo '"'.$webPushId.'"'; ?>;
+			  	var permissionData = window.safari.pushNotification.permission(raa_webpushid);
+		        checkRemotePermission(permissionData);
+			  }
+			  else
+			  {
+				if ('serviceWorker' in navigator) {       
+			     var worker_file_url = <?php echo '"'.$workerFile.'"'; ?>;    	
+			    	navigator.serviceWorker.register(worker_file_url).then(function() {
+			    		return navigator.serviceWorker.ready;
+			    	}).then(function(reg) {    		
+			    		reg.pushManager.subscribe({userVisibleOnly: true}).then(function(sub) {
+			    					
+			    				navigator.serviceWorker.addEventListener('push', function(event) {
+			    					  console.log('navigator.serviceWorker.addEventListener push from main', event);
+			    				});    			
+			    				var subscriptionid = sub.endpoint.split("/").pop();
+			    				console.log('subscriptionid:', subscriptionid);
+			    				    				
+			    				var subscriptionData = getSubscriptionData();	    				
+			    				subscriptionData["endpoint"] = sub.endpoint;
+			    				subscriptionData["subscriptionid"] = subscriptionid;			    				
+			    				subscriptionData["subscription"] = sub;
+			    				if(sub.endpoint.includes('mozilla')) {
+			    					subscriptionData["useragent"]= 'mozilla';
+			    				}
+			    				else if(sub.endpoint.includes('googleapis')) {
+			    					subscriptionData["useragent"]= 'chrome';
+			    				}
+			    				else { 
+			    					subscriptionData["useragent"]= '';
+			    				}   
+			    				 				
+			    				sendSubscriptionData("RAService/push/api/add/subscription",subscriptionData, function(responseData){  
+			    					
+			    					var response = (typeof responseData == "string")?JSON.parse(responseData):responseData;
+			    					if(response==true)
+			    					{
+			    						if(typeof setEmptyTemplate == 'function')
+			     						{
+			    							setEmptyTemplate("");
+			    							raaGetActivityFeeds();
+			     						}	
+			    						else
+			    						{
+			    							var raanotificationicon = document.getElementById('raanotificationicon');
+			     							if(typeof raanotificationicon != 'undefined' && raanotificationicon!=null){
+				 								raanotificationicon.click();
+				 							}
+			    						}
+			    					}
+						    		if(response.hasOwnProperty("html")) {
+						    			
+							    		raajQuery("#raa-default-model-content").empty().append(response["html"]);
+										raajQuery("#raa-default-model").appendTo("body").modal('show');
+										
+						    		}
+						    		
+			    				});    
+			    		});
+			    	}).catch(function(error) {
+			    		console.log('Service Worker error :', error);
+			    		raajQuery("#raa-default-model-content").empty();
+						raajQuery("#raa-default-model").appendTo("body").modal('show');
+
+						alert("eror");
+			    	});
+			    }
+			  }
+				
+		}	
+		/*safari push else google push*/
+		  if ('safari' in window && 'pushNotification' in window.safari) {
+			  var raa_webpushid = <?php echo '"'.$webPushId.'"'; ?>;
+		       var permissionData = window.safari.pushNotification.permission(raa_webpushid);
+		       if (permissionData.permission === 'default') {
+		    	   getSubscriptionTemplate();
+					document.getElementById('raa-enable-push-popup').style.display = 'block';
+				}
+		       //checkRemotePermission(permissionData);
+		   }
+		  else
+		  {
+			 
+		    if ('serviceWorker' in navigator) {     
+		    	  
+	        	var worker_file_url = <?php echo '"'.$workerFile.'"'; ?>;       
+	        	navigator.serviceWorker.register(worker_file_url).then(function() {
+	        		return navigator.serviceWorker.ready;
+	        	}).then(function(reg) {   
+	        		 
+	        		if(Notification.permission === "default") {  
+	        			 var suspendraapush = readCookie("suspendraapush");      
+	        			 var routeName =  document.getElementById('routeName').value; 			
+	        			 if((suspendraapush != true && suspendraapush != "true") || routeName=='rapush_index_index') {
+	        				getSubscriptionTemplate();
+	    		        	document.getElementById('raa-enable-push-popup').style.display = 'block';
+	        			 }            		     
+	    			}
+	        		else 
+	            	{       	
+	        			reg.pushManager.getSubscription().then(function(subscription) {  
+	            		if(subscription == null ) {        				  			  		        		
+	            			reg.pushManager.subscribe({userVisibleOnly: true}).then(function(sub) {  
+	            				var subscriptionid = sub.endpoint.split("/").pop();
+	            				console.log('subscriptionid:', subscriptionid); 
+	            				   	            				
+	            				var subscriptionData = getSubscriptionData();	    				
+	            				subscriptionData["endpoint"] = sub.endpoint;
+	            				subscriptionData["subscriptionid"] = subscriptionid;	            				
+	            				subscriptionData["subscription"] = sub;
+	            				subscriptionData["type"] = "update";
+	            				if(sub.endpoint.includes('mozilla')) {
+	            					subscriptionData["useragent"]= 'mozilla';
+	            				}
+	            				else if(sub.endpoint.includes('googleapis')) {
+	            					subscriptionData["useragent"]= 'chrome';
+	            				}
+	            				else { 
+	            					subscriptionData["useragent"]= '';
+	            				}    	            				         				
+	            				
+	            				sendSubscriptionData("RAService/push/api/add/subscription", subscriptionData, function(responseData){  
+	            						
+	            				});         				
+	            			});												
+	        			} 
+	        			})
+	            	}           		
+	            		
+	        	}).catch(function(error) {
+	        		console.log('Service Worker error :', error);        		
+	        	});        
+	        }
+		  }
+		
+</script>

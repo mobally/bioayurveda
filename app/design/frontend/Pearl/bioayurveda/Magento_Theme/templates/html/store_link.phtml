@@ -1,0 +1,41 @@
+<div class="store-link">
+   <a href="<?php echo $this->getUrl('store-locator');?>"><?php echo __('Store');?> </a>
+</div>
+
+<!-- Website switcher -->
+<?php
+    $storeManager = \Magento\Framework\App\ObjectManager::getInstance()->get('\Magento\Store\Model\StoreManagerInterface');
+    $websites = $storeManager->getWebsites();
+    $websiteid = $storeManager->getWebsite()->getWebsiteId();
+?>
+    <div class="switcher store switcher-store" id="switcher-store">
+    <strong class="label switcher-label"><span><?php echo __('Select Store') ?></span></strong>
+    <div class="actions dropdown options switcher-options">
+    <?php foreach ($websites as $website): ?>
+    <?php if ($websiteid == $website->getId()): ?>
+        <div class="action toggle switcher-trigger"
+             role="button"
+             tabindex="0"
+             data-mage-init='{"dropdown":{}}'
+             data-toggle="dropdown"
+             data-trigger-keypress-button="true"
+             id="switcher-store-trigger">
+            <strong>
+                <span><?php echo $block->escapeHtml($website->getName()) ?></span>
+            </strong>
+        </div>
+    <?php endif; ?>
+    <?php endforeach; ?>
+        <ul class="dropdown switcher-dropdown" data-target="dropdown">
+        <?php foreach ($websites as $website): ?>
+        <?php if (!($websiteid == $website->getId())): ?>
+            <li class="switcher-option">
+                <a href='<?php echo $website->getDefaultStore()->getBaseUrl() ?>'>
+                    <?php echo $block->escapeHtml($website->getName()) ?>
+                </a>
+            </li>
+        <?php endif; ?>
+        <?php endforeach; ?>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--suppress XmlUnboundNsPrefix -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Retail\Analytics\Block\Customer" name="raa.customer" 
+                   template="Retail_Analytics::customer.phtml">
+            </block>
+             <block class="Retail\Analytics\Block\Cart" name="raa.cart" cacheable="false"
+                   template="Retail_Analytics::cart.phtml">
+            </block>
+        </referenceContainer>
+         <referenceContainer name="sidebar.additional">
+            <block class="Retail\Analytics\Block\Element" name="raa.sidebar"
+                   template="Retail_Analytics::sidebar_element.phtml">
+            </block>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block class="Retail\Analytics\Block\Embed" name="raa.embed"
+                   template="Retail_Analytics::embed.phtml">
+            </block>
+        </referenceContainer>
+    </body>
+</page>

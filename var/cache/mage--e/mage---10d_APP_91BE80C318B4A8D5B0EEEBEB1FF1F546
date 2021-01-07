@@ -1,0 +1,2 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609908250;s:6:"expire";i:1609915450;s:4:"tags";s:51:"10d_WEBSITE,10d_CONFIG,10d_COLLECTION_DATA,10d_MAGE";}
+[{"website_id":"1","code":"base","name":"INR - Indian Rupee","sort_order":"0","default_group_id":"1","is_default":"1"},{"website_id":"2","code":"us_store","name":"USD - US Dollar","sort_order":"0","default_group_id":"2","is_default":"0"}]

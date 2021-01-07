@@ -1,0 +1,26 @@
+<?php
+
+/** @var \Retail\Analytics\Block\Product $this */
+$product = $this->getRaaProduct();
+$current_category = $this->getRaaCategoryId();
+//$category = $this->getNostoCategory();
+?>
+    <!-- RAA Product Tagging -->
+    <div class="raa_product" style="display:none">
+    	<span class="raa_entity_id"><?php echo $this->escapeHtml($product->getId()); ?></span>
+    	<span class="raa_product_id" data-key="true"><?php echo $this->escapeHtml($product->getId()); ?></span>
+    	<span class="raa_sku"><?php //echo $product->getSku(); ?></span>
+        <span class="url"><?php echo $this->escapeUrl($product->getProductUrl()); ?></span>
+        <span class="raa_name"><?php //echo $this->escapeHtml($product->getName()); ?></span>
+        <span class="raa_price"><?php echo ($product->getPrice()==0)?$product->getFinalPrice():$product->getPrice(); ?></span>
+        <span class="raa_special_price"><?php echo $product->getFinalPrice(); ?></span>
+        <?php if ($product->getListPrice()) : ?>
+            <span class="list_price"><?php echo $product->getListPrice(); ?></span>
+        <?php endif; ?>
+        <span class="raa_store_currency_code"><?php echo $this->getCurrentCurrencyCode(); ?></span>
+        <span class="raa_base_currency_code"><?php echo $this->getBaseCurrencyCode(); ?></span>
+         <span class="raa_typeid"><?php echo $product->getTypeID(); ?></span>
+         <?php if (!empty($current_category)): ?>
+      	<span class="raa_category_id" data-key="true"><?php echo $current_category; ?></span>
+      <?php endif; ?>
+    </div>

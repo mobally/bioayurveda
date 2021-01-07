@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../Backend/etc/system_file.xsd">
+    <system>
+        <tab id="eighteentech" translate="label" sortOrder="1">
+            <label>EighteenTech Extensions</label>
+        </tab>
+        <section id="eighteentech_core" translate="label" sortOrder="80" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <label>General</label>
+            <tab>eighteentech</tab>
+            <resource>Eighteentech_Core::config_eighteentech</resource>                    
+ 	   </section>
+    </system>
+</config>    

@@ -1,0 +1,113 @@
+/** cart page **/
+
+#giftcard-form,
+#discount-coupon-form {
+	.actions-toolbar {
+		.action.primary {
+			background: @c_000;
+			color: @c_ffffff;
+			box-shadow: none;
+			border-color: @c_000;
+			border-radius: 0;
+			&:hover {
+				background-color: #666666;
+				border-color: #666666;
+				color: @c_ffffff;
+			}
+			
+			&:focus {
+				background-color: @c_000;
+				border-color: @c_000;
+			}
+		}
+	}
+}
+#giftcard-form {
+	.secondary {
+		button.action-check {
+			span {
+				color: black;
+			}
+			&:hover {
+				span {
+					color: @c_ffffff;
+				}
+			}
+		}
+	}
+}
+.cart-container {
+	button {
+		background: @c_000;
+		color: @c_ffffff;
+		box-shadow: none;
+		border-color: @c_000;
+		border-radius: 0;
+		&.action-gift {
+			background: transparent;
+			color: @c_000;
+			box-shadow: none;
+			border-color: transparent;
+		}
+	}
+}
+
+.gift-options {
+	.actions-toolbar {
+		.secondary {
+			button.action-cancel {
+				border: 1px solid @c_000;
+				margin-top: 0;
+				padding: 5px 15px;
+				&:hover {
+					background: @c_000;
+					color: @c_ffffff;
+				}
+			}
+		}
+	}
+}
+.cart.table-wrapper {
+	.product-item-name {
+		font-size: @fs-14;
+		display: block;
+		margin: 0px 0 5px;
+		font-weight: @f-w-6;
+	}
+}
+.checkout-onepage-success {
+	.cmsblock-container {
+		display: none;
+	}
+}
+@media only screen and (min-width: 768px) and (max-width: 980px) {
+	div.cart-container {
+		.cart-summary {
+			width: 100%;
+			top: 0px !important;
+		}
+		.cart-discount,
+		.cart-gift-item,
+		.form-cart {
+			width: 100%;
+			padding-right: 0px;
+		}
+	}
+}
+@media only screen and (max-width: 767px) {
+	div.cart.table-wrapper {
+		.item {
+			.col.item {
+				min-height: 100px;
+				.product-image-photo {
+					height: 90px;
+				}
+			}
+		}
+	}
+	.checkout-cart-index {
+		.algolia-search-block {
+			display: none;
+		}
+	}
+}

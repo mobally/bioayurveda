@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		  <script src="Magento_Theme::js/custom.js"/>
+	</head>
+    <body>
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">148</argument>
+                <argument name="logo_img_height" xsi:type="number">43</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="footer">
+            <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links" template="Magento_Store::switch/stores.phtml"/>
+        </referenceContainer>
+        <referenceBlock name="report.bugs" remove="true"/>
+        <move element="copyright" destination="before.body.end"/>
+        <referenceContainer name="header.panel"> 
+			<container name="store.currency" htmlTag="div" htmlClass="header-store-currency" before="-">           
+				 <block class="Magento\Framework\View\Element\Template" name="store-link" template="Magento_Theme::html/store_link.phtml"/>										        
+			</container>
+			<container name="header.tollfree" htmlTag="div" htmlClass="header-tollfree" after="store.currency">
+				<block class="Magento\Cms\Block\Block" name="Tollfree">
+					<arguments>
+						<argument name="block_id" xsi:type="string">tollfree_block</argument>
+					</arguments>
+				</block>
+			</container>
+			<container name="header.menu.links" htmlTag="div" htmlClass="header-menu-links" after="-"> 
+			</container>
+        </referenceContainer>
+        
+        
+        <move element="currency" destination="store.currency" after="-" />
+        <move element="header.links" destination="header.menu.links" after="-" />
+        <move element="authorization-link" destination="header.links" before="register-link"/>
+        <referenceContainer name="header-wrapper">
+			  <block class="Magento\Framework\View\Element\Template" name="hamburger-link" template="Magento_Theme::html/hamburger_menu.phtml" before="logo"/>
+        </referenceContainer>
+        <referenceContainer name="header.container">
+			<container name="header.navigation.section" htmlTag="div" htmlClass="header-navigation-section hide"> 
+			</container>
+        </referenceContainer>
+         <move element="store.menu" destination="header.navigation.section" after="-" />
+    </body>
+</page>

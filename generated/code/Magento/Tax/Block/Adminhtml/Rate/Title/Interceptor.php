@@ -1,0 +1,29 @@
+<?php
+namespace Magento\Tax\Block\Adminhtml\Rate\Title;
+
+/**
+ * Interceptor class for @see \Magento\Tax\Block\Adminhtml\Rate\Title
+ */
+class Interceptor extends \Magento\Tax\Block\Adminhtml\Rate\Title implements \Magento\Framework\Interception\InterceptorInterface
+{
+    use \Magento\Framework\Interception\Interceptor;
+
+    public function __construct(\Magento\Framework\View\Element\Template\Context $context, \Magento\Store\Model\StoreFactory $storeFactory, \Magento\Framework\Registry $coreRegistry, \Magento\Tax\Api\TaxRateRepositoryInterface $taxRateRepository, array $data = [])
+    {
+        $this->___init();
+        parent::__construct($context, $storeFactory, $coreRegistry, $taxRateRepository, $data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function toHtml()
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'toHtml');
+        if (!$pluginInfo) {
+            return parent::toHtml();
+        } else {
+            return $this->___callPlugins('toHtml', func_get_args(), $pluginInfo);
+        }
+    }
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/system_file.xsd">
+    <system>
+        <tab id="eighteentech" translate="label" sortOrder="300">
+            <label>Eighteentech</label>
+        </tab>
+        <section id="eighteentech_shippingNotification" translate="label" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Shipping Notification</label>
+            <tab>eighteentech</tab>
+            <resource>Eighteentech_ShippingNotification::config_shipping</resource>
+            <group id="shippingNotification" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="notification" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping Notification</label>
+                    <comment>Please enter notification block id</comment>
+                </field>
+                <field id="cookie_time" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cookie Time</label>
+                    <comment>Please enter cookie days</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

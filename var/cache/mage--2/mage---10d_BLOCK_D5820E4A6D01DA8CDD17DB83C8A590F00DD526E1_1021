@@ -1,0 +1,25 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609908465;s:6:"expire";i:1609912065;s:4:"tags";s:78:"10d_BLOCK_HTML,10d_CAT_P_1021,10d_CAT_P,10d_CAT_P_1019,10d_CAT_P_1020,10d_MAGE";}
+  <div class="swatch-opt-1021" data-role="swatch-option-1021"></div><script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option-1021]": {
+            "Magento_Swatches/js/swatch-renderer": {
+                "selectorProduct": ".product-item-details",
+                "onlySwatches": true,
+                "enableControlLabel": false,
+                "numberToShow": 16,
+                "jsonConfig": {"attributes":{"138":{"id":"138","code":"unit","label":"Unit","options":[{"id":"5478","label":"500 ML","products":["1019"]},{"id":"5477","label":"5 LTR","products":["1020"]}],"position":"0"}},"template":"\u20b9<%- data.price %>","currencyFormat":"\u20b9%s","optionPrices":{"1019":{"oldPrice":{"amount":250},"basePrice":{"amount":250},"finalPrice":{"amount":250},"tierPrices":[],"msrpPrice":{"amount":null}},"1020":{"oldPrice":{"amount":2500},"basePrice":{"amount":2500},"finalPrice":{"amount":2500},"tierPrices":[],"msrpPrice":{"amount":null}}},"priceFormat":{"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},"prices":{"oldPrice":{"amount":250},"basePrice":{"amount":250},"finalPrice":{"amount":250}},"productId":"1021","chooseText":"Choose an Option...","images":[],"index":{"1019":{"138":"5478"},"1020":{"138":"5477"}}},
+                "jsonSwatchConfig": {"138":{"5478":{"type":"0","value":"500 ML","label":"500 ML"},"5477":{"type":"0","value":"5 LTR","label":"5 LTR"},"additional_data":"{\"swatch_input_type\":\"text\",\"update_product_preview_image\":\"1\",\"use_product_image_for_swatch\":0}"}},
+                "mediaCallback": "https\u003A\u002F\u002Fwww.bioayurveda.in\u002Fswatches\u002Fajax\u002Fmedia\u002F",
+                "jsonSwatchImageSizeConfig": {"swatchImage":{"width":30,"height":20},"swatchThumb":{"height":90,"width":110}},
+                "showTooltip": 1            }
+        }
+    }</script><script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-1021]": {
+            "priceBox": {
+                "priceConfig": {
+                    "priceFormat": {"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},
+                    "prices": {"oldPrice":{"amount":250},"basePrice":{"amount":250},"finalPrice":{"amount":250}}                }
+            }
+        }
+    }</script>

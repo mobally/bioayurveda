@@ -1,0 +1,15 @@
+<?php 
+ $raaCustomerObj = $block->getCurrentCustomer();
+ if($raaCustomerObj->getCustomer()->getId()){
+ 	$raaCustomer = $raaCustomerObj->getCustomer();
+?>
+<!-- Raa Customer Tagging -->
+<div class="raa_customer" style="display:none">	
+    <span class="raa_entity_id" data-key="true"><?php echo ($raaCustomer->getId()); ?></span>
+    <span class="raa_customer_id" data-key="true"><?php echo ($raaCustomer->getId()); ?></span>
+    <span class="raa_firstname"><?php echo ($raaCustomer->getFirstname()); ?></span>
+    <span class="raa_lastname"><?php echo ($raaCustomer->getLastname()); ?></span>
+    <span class="raa_email" data-key="true"><?php echo ($raaCustomer->getEmail()); ?></span>    
+    <span class="raa_phone"><?php echo ($raaCustomer->getPhone()); ?></span>
+</div>
+<?php }?>

@@ -1,0 +1,157 @@
+<?php 
+
+$enable_push = $this->getEnablePush();
+if($enable_push != "true"){
+	return;
+}
+
+$raaDate = date('Y-m-d');
+$currency_code = $this->getCurrentCurrencyCode();
+$currency_symbol = $this->getCurrentCurrencySymbol();
+
+$external_ip = $this->getClientIP();
+
+$internal_ip = $this->getInternalIp();
+
+if($internal_ip =="" || $internal_ip ==null){
+	if(isset ( $_COOKIE ['rainternalip'] )) {
+		$internal_ip = $_COOKIE ['rainternalip'];
+	}
+}
+
+$logo_src = "";
+if ($logo_src == "") {
+	$logo_src =  $this->getSkinUrl('images/logo.png');
+}
+$base_url = $this->getBaseUrl();
+if( (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443)) {
+	$base_url = $this->getBaseUrl('',array('_forced_secure'=>true));
+}
+
+$raa_resourceserver =  $this->getResourceServer();
+if( (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443)) {
+	$raa_resourceserver = "https://". $raa_resourceserver.":8443";
+} else {
+	$raa_resourceserver = "http://". $raa_resourceserver.":8080";
+}
+$raa_resourcedir =  $this->getResourcedir();
+$raa_resourcedir = ($raa_resourcedir == "")?"default":$raa_resourcedir;
+$raa_client_resourceurl = $raa_resourceserver . "/ralib/magento/".$raa_resourcedir."/push/";
+$raa_framework_resourceurl = $raa_resourceserver . "/ralib/magento/push/";
+
+
+$default_logo_src= $raa_client_resourceurl.'images/home_default_logo.png';
+
+$raa_style_css_url= $raa_client_resourceurl.'css/rtr-style.css?date='.$raaDate;
+$notification_js_url= $raa_client_resourceurl.'js/notification.js?date='.$raaDate;
+
+$rtr_material_css_url= $raa_framework_resourceurl.'css/rtr-material.css?date='.$raaDate;
+
+$rtr_bootstrap_raa_css_url= $raa_framework_resourceurl.'css/rtr-bootstrap-raa.css?date='.$raaDate;
+$rtr_animate_css_url= $raa_framework_resourceurl.'css/rtr-animate.css?date='.$raaDate;
+
+$rtr_material_js_url= $raa_framework_resourceurl.'js/rtr-material.js?date='.$raaDate;
+$rtr_bootstrap_js_url= $raa_framework_resourceurl.'js/rtr-bootstrap.js?date='.$raaDate;
+$jquery_js_url= $raa_framework_resourceurl.'js/jquery-2.2.3.min.js?date='.$raaDate;
+
+$workerFile = $base_url.'rasw.js';
+
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<title>Notifications List</title>
+ <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link rel="stylesheet" type="text/css" href="<?php echo $raa_style_css_url?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo $rtr_material_css_url?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo $rtr_bootstrap_raa_css_url?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo $rtr_animate_css_url?>" />
+  
+</head>
+
+<body class="bootstrap-raa">
+<input type="hidden" id="hdn-internal-ip" value="<?php echo $internal_ip; ?>">
+<input type="hidden" id="hdn-external-ip" value="<?php echo $external_ip; ?>">
+<input type="hidden" id="hdn-raa-server" value="<?php echo $this->getServer(); ?>">
+<input type="hidden" id="hdn-raa-appid" value="<?php echo $this->getAccount(); ?>">
+
+<?php if ($this->getCurrentCustomer()->getEmail()!=""): ?>
+<input type="hidden" id="hdn-raa-email" value="<?php echo $this->getCurrentCustomer()->getCustomer()->getEmail(); ?>">
+<?php endif; ?>
+ <!-- top bar -->
+<header class="mdl-layout__header--scroll is-casting-shadow mdl-color--indigo navbar-fixed-top">
+      <div class="mdl-layout__header-row mdl-color-text--white">
+      <span class="mdl-layout-title">My Notification</span>
+      </div>
+</header>
+
+<!-- contant area -->
+ <div style="overflow:auto;" class="raadata-container mdl-layout__container" >
+  <div class="raa-notificationloader" style="display:none"></div>
+ 
+ <div class="delete-confirmation" style="display:none">
+ <p>Are You Sure Want To Delete This?</p>
+
+ <a href="#" onclick="raaDeleteActivityFeed()" class="raaconfirmationbtn raa-yes-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Yes</a>
+ <a href="#" onclick="raaHideDeletePopup()" class="raaconfirmationbtn raa-no-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >No</a>
+ </div>
+  <ul id="raa-reco-products-container" class="mdl-list raalist-group accordion">
+    
+        
+    </ul>
+    </div>
+ <!-- bottum bar -->
+ <footer class="mdl-mini-footer navbar-fixed-bottom raamyoffer-footer mdl-color--white  border">
+  <div class="mdl-mini-footer__left-section">
+    <ul class="mdl-mini-footer__link-list">
+      <li><a href="https://www.retailreco.com/">Powered by - retailreco.com</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Raa Tagging Script -->
+<script type="text/javascript">
+var raa_internal_ip = "<?php $value =""; if(isset ( $_COOKIE ['rainternalip'] )) $value = $_COOKIE ['rainternalip']; echo $value;  ?>";
+if(raa_internal_ip == ""){
+	
+}
+</script>
+<!--/Start your project here-->
+
+<!-- SCRIPTS -->
+
+<!-- JQuery -->
+<script type="text/javascript" src="<?php echo $jquery_js_url?>"></script> 
+ <script type="text/javascript">
+	var raajQuery = jQuery.noConflict();
+</script>
+<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+<script src="<?php echo $rtr_material_js_url?>"></script>
+ <script src="<?php echo $rtr_bootstrap_js_url?>"></script>
+  <!-- RTR code lib -->
+<script id="raa_notification_js" type="text/javascript" src="<?php echo $notification_js_url; ?>"></script>
+ <script type="text/javascript">
+ raajQuery('body').addClass("bootstrap-raa");
+	 raajQuery(document).click(function() {
+
+	    raajQuery(".delete-confirmation").hide();
+		localStorage.removeItem("raafeedid");
+	 });
+    raajQuery(document).ready(function() {
+         raa_notification_init();	
+    });
+   
+</script>
+
+</body>
+
+</html>
+

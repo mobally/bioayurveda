@@ -1,0 +1,136 @@
+<div id="raa_push"></div>
+<?php 
+
+$enable_push = $this->getEnablePush();
+if($enable_push != "true"){
+	return;
+}
+
+$developmentmodeemail = $this->getDevelopmentmodeEmail();
+if($developmentmodeemail!="")
+{
+	if ($this->getCurrentCustomer()->getCustomer()->getEmail()!=$developmentmodeemail){
+		return;
+	}
+}
+
+$raaDate = date('Y-m-d');
+$raa_resourceserver =  $this->getResourceServer();
+if( (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443)) {
+	$raa_resourceserver = "https://". $raa_resourceserver.":8443";
+} else {
+	$raa_resourceserver = "http://". $raa_resourceserver.":8080";
+}
+
+/* check if server responding properly*/
+/*if (@fopen($raa_resourceserver,"r")===false) {
+	return;
+}*/
+
+$raa_resourcedir =  $this->getResourcedir();
+
+$raa_resourcedir = ($raa_resourcedir == "")?"default":$raa_resourcedir;
+$raa_client_resourceurl = $raa_resourceserver . "/ralib/magento/".$raa_resourcedir."/push/";
+$raa_framework_resourceurl = $raa_resourceserver . "/ralib/magento/push/";
+
+$goto_notification_style_css_url= $raa_client_resourceurl.'css/goto-notification-style.css';
+$rtr_animate_css_url= $raa_framework_resourceurl.'css/rtr-animate.css?date='.$raaDate;
+$rtr_style_css_url= $raa_client_resourceurl.'css/rtr-style.css?date='.$raaDate;
+//$notification_url=  Mage::getUrl("rapush/index/notification");
+
+$notification_url = $block->getUrl('rapush/index/index');
+if( (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443)) {
+	$notification_url= $block->getUrl("rapush/index/index", array('_forced_secure' => true));
+}
+
+?>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link media="all" href="<?php echo $goto_notification_style_css_url; ?>" type="text/css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="<?php echo $rtr_style_css_url?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo $rtr_animate_css_url?>" />
+
+<div class="bootstrap-raa">
+<div class="hidden raartr mdl-shadow--4dp animated " id="notificationcontainer" >
+<div class="raa-notificationloader"></div>
+<div id="iframe_parent" style="height:98%">
+
+</div>
+   
+</div>
+
+<div class="raa-rtr-infotooltip" style="display:none">
+Be the first to know about our latest Fashion and discount every time! 
+<i class="icon material-icons animated raa-infotooltip-close" id="rtrinfotooltipclose">clear</i>
+<div class="raa-infotooltip-rightarrow"></div>
+</div>
+<button id="raanotificationicon" class="raanotification-icon mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+  <i class="icon material-icons animated" id="rtrmainicon">notifications_none</i>
+</button>
+
+</div>
+
+<script>
+
+require(['jquery'],function(raajQuery) {
+		raajQuery("#notificationcontainer").hide();
+		raajQuery("#rtrinfotooltipclose").click(function(){
+			 createCookies("rapushtooltip","true")
+  			 raajQuery(".raa-rtr-infotooltip").hide();
+  		});
+  		function raShowPushToolTip()
+  		{
+  			var rapushtooltip = readCookie('rapushtooltip');
+  			if(rapushtooltip=="" || rapushtooltip==null)
+  			{
+  				raajQuery(".raa-rtr-infotooltip").show();
+  			}
+  			else
+  			{
+  				raajQuery(".raa-rtr-infotooltip").hide();
+  			}
+  		}
+  		raShowPushToolTip();
+  		function readCookie(name)
+		{
+			return (name = new RegExp('(?:^|;\\s*)' + ('' + name).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '=([^;]*)').exec(document.cookie)) && name[1];
+		}
+  		function createCookies(name,value)
+	    {
+	    	var raa_date = new Date();
+	    	raa_date.setTime(raa_date.getTime() + (365*24*1*60*60*1000));
+	    	var raa_expires = "expires="+raa_date.toUTCString();
+	    	document.cookie = name + "=" + value + "; " + raa_expires;
+	    }
+ 		var i = 0;
+ 		    function handler1() {
+ 		    	raajQuery(".raa-rtr-infotooltip").hide();
+ 				i = 1;
+ 			    //raajQuery('#raanotificationicon').animate({'bottom' : '60px'});
+ 				raajQuery('#raanotificationicon').addClass('raaacrivebutton');
+ 				var notification_url = <?php echo '"'.$notification_url.'"'; ?>;		
+ 				var iframe = document.createElement('iframe');
+ 				iframe.setAttribute('src', notification_url);
+ 				iframe.setAttribute('height', '100%');
+ 				iframe.setAttribute('width', '100%');
+ 				iframe.setAttribute('id', 'ra-iframe');
+ 				iframe.style.border="0px";
+ 				document.getElementById('iframe_parent').appendChild(iframe);
+ 				raajQuery("#notificationcontainer").removeClass('slideOutRight hidden');	
+ 				raajQuery("#notificationcontainer").addClass('slideInRight active');
+ 				raajQuery(this).one("click", handler2);
+ 				raajQuery('#rtrmainicon').html('clear');
+ 		    }
+ 		    function handler2() {
+ 		    //raajQuery('#raanotificationicon').animate({bottom : "60px"});
+ 			   i = 0;
+ 			   raajQuery('#raanotificationicon').removeClass('raaacrivebutton');
+ 			   raajQuery('#ra-iframe').remove();
+ 			   raajQuery("#notificationcontainer").removeClass('slideInRight active');
+ 			   raajQuery("#notificationcontainer").addClass('slideOutRight');
+ 			   raajQuery(this).one("click", handler1);
+ 			  raajQuery('#rtrmainicon').html('notifications_none');
+ 		    }
+ 		   raajQuery("#raanotificationicon").one("click", handler1);
+	});
+</script>

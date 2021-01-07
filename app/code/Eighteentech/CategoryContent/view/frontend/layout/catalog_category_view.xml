@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<body>
+		<referenceContainer name="category.view.container">
+			<block class="Eighteentech\CategoryContent\Block\Index\Index" name="category_contents" template="Eighteentech_CategoryContent::category_content.phtml" />
+		 </referenceContainer>				 
+		  <referenceBlock name="category.image" remove="true"/>
+		  <move element="page.main.title" destination="category.view.container" after="category_contents"/>
+
+    </body>
+</page>

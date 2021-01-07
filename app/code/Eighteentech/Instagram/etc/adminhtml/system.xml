@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/system_file.xsd">
+    <system>
+        <tab id="eighteentech" translate="label" sortOrder="300">
+            <label>Eighteentech</label>
+        </tab>
+        <section id="eighteentech_instagram" translate="label" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Instagram</label>
+            <tab>eighteentech</tab>
+            <resource>Eighteentech_Instagram::config_instagram</resource>
+            <group id="instagram" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="userId" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>User Id</label>
+                    <comment>Please enter user Id.</comment>
+                </field>
+                <field id="clientId" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Client Id</label>
+                    <comment>Please enter Client Id.</comment>
+                </field>
+                <field id="accessToken" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Access Token</label>
+                    <comment>Please enter Access Token.</comment>
+                </field>
+                 <field id="followBlock" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Follow Us Block</label>
+                    <comment>Please enter Block Id.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

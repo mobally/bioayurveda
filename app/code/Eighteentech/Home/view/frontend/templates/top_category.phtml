@@ -1,0 +1,23 @@
+<?php
+$topCategoryList = $block->getTopLevelCateogryList();
+if(is_object($topCategoryList)):?>
+
+	<ul class="footer links">
+		<?php foreach($topCategoryList as $category):?>
+		<?php 
+		      $categoryURL = $category->getUrl();
+		      $customURL = $category->getWeltpixelCategoryUrl();
+		      if($customURL!=''){
+				  $categoryURL = $customURL;
+		      }
+		?>
+		   <li class="nav item">
+		       <a href="<?php echo $categoryURL?>">
+		          <span class="label">
+		                <?php echo $category->getName()?>
+		          </span>
+		       </a>
+		   </li>
+		<?php endforeach ?>
+	</ul>
+<?php endif;?>

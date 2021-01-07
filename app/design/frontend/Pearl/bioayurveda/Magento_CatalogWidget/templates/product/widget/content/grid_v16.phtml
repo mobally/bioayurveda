@@ -1,0 +1,125 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+use Magento\Framework\App\Action\Action;
+?>
+<?php
+/**
+ * Template for displaying products list widget
+ *
+ * @var $block \Magento\CatalogWidget\Block\Product\ProductsList
+ */
+?>
+<?php if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())):?>
+    <?php
+    $type = 'widget-product-grid';
+
+    $mode = 'grid';
+
+    $image = 'new_products_content_widget_grid_hp_v16';
+    $title = $block->getTitle() ? __($block->getTitle()) : '';
+    $items = $block->getProductCollection()->getItems();
+
+    $showWishlist = true;
+    $showCompare = true;
+    $showCart = true;
+    $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::DEFAULT_VIEW;
+    $description = false;
+
+    $condition = $this->getConditionsEncoded();
+    $categoryHelper = $this->helper('WeltPixel\CategoryPage\Helper\Category');
+    $categoryDetails = $categoryHelper->getCategoryDetailsFromCondition($condition);
+    ?>
+
+    <div class="block widget block-products-list <?php /* @escapeNotVerified */ echo $mode; ?>">
+        <?php if ($title):?>
+            <div class="block-title">
+                <h1 class="c-product-tray__h2"><?php /* @escapeNotVerified */ echo $title; ?></h1>
+                <a href="<?php echo $categoryDetails['url']; ?>" class="see-all"><?php echo __('See All')?></a>
+            </div>
+        <?php endif ?>
+        <div class="block-content">
+            <?php /* @escapeNotVerified */ echo '<!-- ' . $image . '-->' ?>
+            <div class="products-<?php /* @escapeNotVerified */ echo $mode; ?> <?php /* @escapeNotVerified */ echo $mode; ?>">
+                <ol class="product-items <?php /* @escapeNotVerified */ echo $type; ?>  owl-carousel owl-theme"  id="best_seller_slider">
+                    <?php $iterator = 1; ?>
+                    <?php foreach ($items as $_item): ?>
+                        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="product-item item-v16">' : '</li><li class="product-item item-v16">' ?>
+                        <div class="product-item-info-v10">
+                            <a href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>" class="product-item-photo">
+                                <?php echo $block->getImage($_item, $image)->toHtml(); ?>
+                            </a>
+                            <div class="product-item-details">
+                                <a title="<?php echo $block->escapeHtml($_item->getName()) ?>"
+                                   href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>"
+                                   class="product-item-link">
+                                    <?php echo $block->escapeHtml($_item->getName()) ?>
+                                </a>
+                                <?php
+                                echo $block->getProductPriceHtml($_item, $type);
+                                ?>
+                                <div class="actions-primary">                              
+                                       
+                                        <?php if ($_item->isSaleable()): ?>
+                                                        <?php $postParams = $block->getAddToCartPostParams($_item); ?>
+                                                        <div class="item-swatch-info">
+                                                        <?= $block->getProductDetailsHtml($_item) ?>
+                                                        </div>
+                                                        <form data-role="tocart-form" data-product-sku="<?= $block->escapeHtml($_item->getSku()) ?>" action="<?= /* @NoEscape */ $postParams['action'] ?>" method="post" class="quick-add-form">                                                                                                                        
+                                                            <input type="hidden" name="product" value="<?= /* @escapeNotVerified */ $postParams['data']['product'] ?>">
+                                                            <input type="hidden" name="<?= /* @escapeNotVerified */ Action::PARAM_NAME_URL_ENCODED ?>" value="<?= /* @escapeNotVerified */ $postParams['data'][Action::PARAM_NAME_URL_ENCODED] ?>">
+                                                            <?= $block->getBlockHtml('formkey') ?>                                                           
+                                                           <button type="submit"
+                                                    title="<?= $block->escapeHtml(__('Add to Cart')) ?>"
+                                                    class="action tocart primary">
+                                                <span><?= __('Add to Cart') ?></span>
+                                            </button> 
+                                                        </form>
+                                                        <?php echo $this->getLayout()->createBlock("Eighteentech\Buynow\Block\Product\ListProduct")->setProduct($_item)->setTemplate("Eighteentech_Buynow::buynow-list.phtml")->toHtml(); ?>                                   
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php echo($iterator == count($items)+1) ? '</li>' : '' ?>
+                    <?php endforeach ?>
+                </ol>
+            </div>
+            <?php echo $block->getPagerHtml() ?>
+        </div>
+    </div>
+<?php endif;?>
+<script>
+		require(["jquery","owl_carousel"],function($) {
+            $(document).ready(function() {
+                $("#best_seller_slider").owlCarousel({
+                    loop: false,
+					margin: 20,
+					dots: true,
+					nav: true,
+					responsive: {
+						0: {
+							items: 2,
+							margin: 15,
+							nav: true,
+							loop: false,
+						},
+						480: {
+							items: 2
+						},
+						992: {
+							items: 3
+						},
+						1200: {
+							items: 4
+						}
+					}
+                });
+             });
+        });
+	
+</script>    
+                

@@ -1,0 +1,25 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609908507;s:6:"expire";i:1609912107;s:4:"tags";s:78:"10d_BLOCK_HTML,10d_CAT_P_1348,10d_CAT_P,10d_CAT_P_1346,10d_CAT_P_1347,10d_MAGE";}
+  <div class="swatch-opt-1348" data-role="swatch-option-1348"></div><script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option-1348]": {
+            "Magento_Swatches/js/swatch-renderer": {
+                "selectorProduct": ".product-item-details",
+                "onlySwatches": true,
+                "enableControlLabel": false,
+                "numberToShow": 16,
+                "jsonConfig": {"attributes":{"138":{"id":"138","code":"unit","label":"Unit","options":[{"id":"5457","label":"200 GM","products":["1346"]},{"id":"5460","label":"500 GM","products":["1347"]}],"position":"0"}},"template":"\u20b9<%- data.price %>","currencyFormat":"\u20b9%s","optionPrices":{"1346":{"oldPrice":{"amount":599},"basePrice":{"amount":599},"finalPrice":{"amount":599},"tierPrices":[],"msrpPrice":{"amount":null}},"1347":{"oldPrice":{"amount":1299},"basePrice":{"amount":1299},"finalPrice":{"amount":1299},"tierPrices":[],"msrpPrice":{"amount":null}}},"priceFormat":{"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},"prices":{"oldPrice":{"amount":599},"basePrice":{"amount":599},"finalPrice":{"amount":599}},"productId":"1348","chooseText":"Choose an Option...","images":[],"index":{"1346":{"138":"5457"},"1347":{"138":"5460"}},"preSelectedGallery":[]},
+                "jsonSwatchConfig": {"138":{"5457":{"type":"0","value":"200 GM","label":"200 GM"},"5460":{"type":"0","value":"500 GM","label":"500 GM"},"additional_data":"{\"swatch_input_type\":\"text\",\"update_product_preview_image\":\"1\",\"use_product_image_for_swatch\":0}"}},
+                "mediaCallback": "https\u003A\u002F\u002Fwww.bioayurveda.in\u002Fswatches\u002Fajax\u002Fmedia\u002F",
+                "jsonSwatchImageSizeConfig": {"swatchImage":{"width":22,"height":20},"swatchThumb":{"height":90,"width":110}},
+                "showTooltip": 1            }
+        }
+    }</script><script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-1348]": {
+            "priceBox": {
+                "priceConfig": {
+                    "priceFormat": {"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},
+                    "prices": {"oldPrice":{"amount":599},"basePrice":{"amount":599},"finalPrice":{"amount":599}}                }
+            }
+        }
+    }</script>

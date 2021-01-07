@@ -1,0 +1,25 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609909732;s:6:"expire";i:1609913332;s:4:"tags";s:78:"10d_BLOCK_HTML,10d_CAT_P_2045,10d_CAT_P,10d_CAT_P_2043,10d_CAT_P_2044,10d_MAGE";}
+  <div class="swatch-opt-2045" data-role="swatch-option-2045"></div><script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option-2045]": {
+            "Magento_Swatches/js/swatch-renderer": {
+                "selectorProduct": ".product-item-details",
+                "onlySwatches": true,
+                "enableControlLabel": false,
+                "numberToShow": 16,
+                "jsonConfig": {"attributes":{"138":{"id":"138","code":"unit","label":"Unit","options":[{"id":"5457","label":"200 GM","products":["2043"]},{"id":"5460","label":"500 GM","products":["2044"]}],"position":"0"}},"template":"\u20b9<%- data.price %>","currencyFormat":"\u20b9%s","optionPrices":{"2043":{"oldPrice":{"amount":599},"basePrice":{"amount":599},"finalPrice":{"amount":599},"tierPrices":[],"msrpPrice":{"amount":null}},"2044":{"oldPrice":{"amount":1299},"basePrice":{"amount":1299},"finalPrice":{"amount":1299},"tierPrices":[],"msrpPrice":{"amount":null}}},"priceFormat":{"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},"prices":{"oldPrice":{"amount":599},"basePrice":{"amount":599},"finalPrice":{"amount":599}},"productId":"2045","chooseText":"Choose an Option...","images":[],"index":{"2043":{"138":"5457"},"2044":{"138":"5460"}},"preSelectedGallery":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/a\/v\/avocado-intense-restore-hand-lotion-01_1_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/a\/v\/avocado-intense-restore-hand-lotion-01_1_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/a\/v\/avocado-intense-restore-hand-lotion-01_1_1.jpg","position":"1","isMain":true,"gallery":{"6995":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/a\/v\/avocado-intense-restore-hand-lotion-01_1_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/a\/v\/avocado-intense-restore-hand-lotion-01_1_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/a\/v\/avocado-intense-restore-hand-lotion-01_1_1.jpg","position":"1","isMain":true},"6996":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/a\/v\/avocado-intense-restore-hand-lotion-02_1_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/a\/v\/avocado-intense-restore-hand-lotion-02_1_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/a\/v\/avocado-intense-restore-hand-lotion-02_1_1.jpg","position":"2","isMain":false},"6997":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/a\/v\/avocado-intense-restore-hand-lotion-03_1_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/a\/v\/avocado-intense-restore-hand-lotion-03_1_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/a\/v\/avocado-intense-restore-hand-lotion-03_1_1.jpg","position":"3","isMain":false}}}},
+                "jsonSwatchConfig": {"138":{"5457":{"type":"0","value":"200 GM","label":"200 GM"},"5460":{"type":"0","value":"500 GM","label":"500 GM"},"additional_data":"{\"swatch_input_type\":\"text\",\"update_product_preview_image\":\"1\",\"use_product_image_for_swatch\":0}"}},
+                "mediaCallback": "https\u003A\u002F\u002Fwww.bioayurveda.in\u002Fswatches\u002Fajax\u002Fmedia\u002F",
+                "jsonSwatchImageSizeConfig": {"swatchImage":{"width":22,"height":20},"swatchThumb":{"height":90,"width":110}},
+                "showTooltip": 1            }
+        }
+    }</script><script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-2045]": {
+            "priceBox": {
+                "priceConfig": {
+                    "priceFormat": {"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},
+                    "prices": {"oldPrice":{"amount":599},"basePrice":{"amount":599},"finalPrice":{"amount":599}}                }
+            }
+        }
+    }</script>

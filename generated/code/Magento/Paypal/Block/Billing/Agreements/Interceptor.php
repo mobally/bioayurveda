@@ -1,0 +1,29 @@
+<?php
+namespace Magento\Paypal\Block\Billing\Agreements;
+
+/**
+ * Interceptor class for @see \Magento\Paypal\Block\Billing\Agreements
+ */
+class Interceptor extends \Magento\Paypal\Block\Billing\Agreements implements \Magento\Framework\Interception\InterceptorInterface
+{
+    use \Magento\Framework\Interception\Interceptor;
+
+    public function __construct(\Magento\Framework\View\Element\Template\Context $context, \Magento\Customer\Model\Session $customerSession, \Magento\Paypal\Model\ResourceModel\Billing\Agreement\CollectionFactory $agreementCollection, \Magento\Paypal\Helper\Data $helper, array $data = [])
+    {
+        $this->___init();
+        parent::__construct($context, $customerSession, $agreementCollection, $helper, $data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function toHtml()
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'toHtml');
+        if (!$pluginInfo) {
+            return parent::toHtml();
+        } else {
+            return $this->___callPlugins('toHtml', func_get_args(), $pluginInfo);
+        }
+    }
+}

@@ -1,0 +1,70 @@
+<?php
+$categoryCollection = $block->getCategoryCollection();
+
+if(count($categoryCollection)):	
+?>
+
+<div class="home-category-slider">
+	<ul class="owl-carousel owl-theme" id="home_cateogry_slider">
+		<?php foreach($categoryCollection as $category):?>		
+			<li> 
+				<div class="category-item-container">
+					<div class="image-section">
+						<a href="<?php echo $category->getUrl()?>">
+						<?php
+							 if ($_imgUrl = $category->getImageUrl()) {
+									$_imgHtml = '<img src="' . $_imgUrl . '" alt="'.$category->getName().'"/>';
+									$_imgHtml = $block->outputHelper->categoryAttribute($category, $_imgHtml, 'image');
+									/* @escapeNotVerified */ echo $_imgHtml;
+								}
+						  ?>
+						  </a>
+					</div>
+					<div class="product-details">
+						<div class="category-name">
+							<span class="title"><?php echo $category->getName()?></span>
+							<span class="tagline"><?php echo $category->getCategoryTagline()?></span>
+						</div>
+					</div>
+				
+					<div class="show-now-button">
+						<a href="<?php echo $category->getUrl()?>">
+							<span><?php echo __('SHOP NOW');?></span>
+						</a>
+					</div>
+				</div>				
+			</li>	     
+		<?php endforeach ?>
+	</ul>
+</div>
+<script>
+		require(["jquery","owl_carousel"],function($) {
+            $(document).ready(function() {
+                $("#home_cateogry_slider").owlCarousel({
+                    loop: true,
+					margin: 20,
+					dots: true,
+					nav: false,
+					responsive: {
+						0: {
+							items: 2,
+							margin: 0,
+							nav: true,
+							loop: false,
+						},
+						768: {
+							items: 2
+						},
+						992: {
+							items: 3
+						},
+						1200: {
+							items: 3
+						}
+					}
+                });
+             });
+        });
+	
+</script>
+<?php endif;?>

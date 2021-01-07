@@ -1,0 +1,29 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609908560;s:6:"expire";i:1609994960;s:4:"tags";s:63:"10d_CAT_P,10d_BLOCK_HTML,10d_CAT_P_2062,10d_CAT_P_2052,10d_MAGE";}
+    <div class="block widget block-products-list grid"> <div class="block-content"><!-- new_products_content_widget_grid_hp_v16--> <div class="products-grid grid"><ol class="product-items widget-product-grid owl-carousel owl-theme" id="best_seller_slider">  <li class="product-item item-v16"> <div class="product-item-info-v10"><a href="https://www.bioayurveda.in/bio-natural-pure-rose-water-combo-pack" class="product-item-photo">   <span class="product-image-container" style="width:390px;"><span class="product-image-wrapper" style="padding-bottom: 100%;"><img class="product-image-photo "    src="https://www.bioayurveda.in/pub/media/catalog/product/cache/8f6e564c6e29950a5a80ed3e53e9bec8/0/2/02_3.jpg"    width="390" height="390" alt="BIO NATURAL PURE ROSE WATER COMBO PACK"  /></span></span></a> <div class="product-item-details"><a title="BIO NATURAL PURE ROSE WATER COMBO PACK" href="https://www.bioayurveda.in/bio-natural-pure-rose-water-combo-pack" class="product-item-link">BIO NATURAL PURE ROSE WATER COMBO PACK</a> <div class="price-box price-final_price" data-role="priceBox" data-product-id="2062" data-price-box="product-id-2062">      <span class="price-container price-final_price&#x20;tax&#x20;weee" > <span  id="old-price-2062-widget-product-grid"  data-price-amount="300" data-price-type="" class="price-wrapper " ><span class="price">₹300.00</span></span>  </span>   </div> <div class="actions-primary">  <div class="item-swatch-info"></div><form data-role="tocart-form" data-product-sku="BIO NATURAL PURE ROSE WATER COMBO PACK" action="https://www.bioayurveda.in/bio-natural-pure-rose-water-combo-pack?options=cart" method="post" class="quick-add-form"><input type="hidden" name="product" value="2062"><input type="hidden" name="uenc" value="aHR0cHM6Ly93d3cuYmlvYXl1cnZlZGEuaW4vYmlvLW5hdHVyYWwtcHVyZS1yb3NlLXdhdGVyLWNvbWJvLXBhY2s_b3B0aW9ucz1jYXJ0"><input name="form_key" type="hidden" value="DwrJbNmTiyTI1BVQ" /> <button type="submit" title="Add to Cart" class="action tocart primary"><span>Add to Cart</span></button></form>     <div class="buynow-btn"><form action="https://www.bioayurveda.in/bio-natural-pure-rose-water-combo-pack?options=cart" id="product_addtocart_form_2062" method="post"><input type="hidden" name="product" value="2062"><input type="hidden" name="uenc" value="aHR0cHM6Ly93d3cuYmlvYXl1cnZlZGEuaW4vYmlvLW5hdHVyYWwtcHVyZS1yb3NlLXdhdGVyLWNvbWJvLXBhY2s_b3B0aW9ucz1jYXJ0"><input name="form_key" type="hidden" value="DwrJbNmTiyTI1BVQ" /> <button type="submit" title="Buy Now" class="action tocart buynow primary" data-mage-init=' { "Eighteentech_Buynow/js/buy-now": { "form": "#product_addtocart_form_2062" } } '><span>Buy Now</span></button> </form></div> </div></div></div></li> </ol></div></div></div> <script>
+		require(["jquery","owl_carousel"],function($) {
+            $(document).ready(function() {
+                $("#best_seller_slider").owlCarousel({
+                    loop: false,
+					margin: 20,
+					dots: true,
+					nav: true,
+					responsive: {
+						0: {
+							items: 2,
+							margin: 15,
+							nav: true,
+							loop: false,
+						},
+						480: {
+							items: 2
+						},
+						992: {
+							items: 3
+						},
+						1200: {
+							items: 4
+						}
+					}
+                });
+             });
+        });</script>

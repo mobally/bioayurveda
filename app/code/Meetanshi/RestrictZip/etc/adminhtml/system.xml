@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="meetanshi" translate="label" class="meetanshi" sortOrder="100">
+            <label></label>
+        </tab>
+        <section id="restrict_zip" translate="label" type="text" sortOrder="330" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Restrict Zip Codes</label>
+            <tab>meetanshi</tab>
+            <resource>Meetanshi_RestrictZip::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="101" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Configuration</label>
+                <field id="enabled" translate="label comment" sortOrder="102" type="select" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Restrict Zip Codes</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="show_delivery_time" translate="label comment" sortOrder="103" type="select" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Estimated Delivery Time</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="checker_mag" translate="label comment" sortOrder="104" type="text" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Zip code Checker Message</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="delivery_availability_msg" translate="label comment" sortOrder="105" type="text"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Delivery Availability Message</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="delivery_unavailability_msg" translate="label comment" sortOrder="106" type="text"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Delivery Unavailability Message</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="delete_zip" translate="label comment" sortOrder="107" type="select" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Delete Existing Zip Codes</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Save configuration immediately after selecting the option for this setting.</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="export" translate="label comment" sortOrder="108"
+                       type="Meetanshi\RestrictZip\Block\Adminhtml\System\Config\Form\Field\Export" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Export Existing Zip Codes</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="import_csv" translate="label comment" sortOrder="109"
+                       type="Magento\Config\Block\System\Config\Form\Field\File" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Import Zip Codes CSV</label>
+                    <backend_model>Meetanshi\RestrictZip\Model\Config\Backend\ZipCode</backend_model>
+                    <upload_dir config="system" scope_info="1">restrict/zipcode</upload_dir>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                    <comment model="Meetanshi\RestrictZip\Block\Adminhtml\System\Config\Form\Field\Link"/>
+                </field>
+            </group>
+
+        </section>
+    </system>
+</config>

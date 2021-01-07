@@ -1,0 +1,162 @@
+<?php
+/** 
+ */
+?>
+
+
+<?php
+/**
+ */
+
+$isonline = $this->getConfigIsOnline();
+$isgaOrderTracking = $this->getConfigIsOrderTracking();
+$isretargeting = $this->getConfigIsRetargeting();
+$isgui = $this->getConfigIsGUI();
+$rates = $this->getCurrencyRates();
+
+?>
+
+<!-- Raa Tagging Script -->
+<script type="text/javascript"> 
+
+var raa_isonline = <?php echo '"'.$isonline.'"'; ?>;
+
+	var raa_internal_ip = localStorage.getItem("rainternalip");
+	var raa_internal_ip_cookie = "<?php $value =""; if(isset ( $_COOKIE ['rainternalip'] )) $value = $_COOKIE ['rainternalip']; echo $value;  ?>";
+	if(raa_internal_ip == null || raa_internal_ip == ""){
+		var d = new Date().getTime();
+	    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+	        var r = (d + Math.random()*16)%16 | 0;
+	        d = Math.floor(d/16);
+	        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+	    });
+		raa_internal_ip = uuid;
+		try{
+	 		localStorage.setItem("rainternalip",raa_internal_ip);
+		}
+		catch(err)
+        { }
+		
+	}
+	if(raa_internal_ip_cookie == null || raa_internal_ip_cookie == ""){
+		var raa_date = new Date();
+	 	raa_date.setTime(raa_date.getTime() + (1*24*60*60*1000));
+	 	var raa_expires = "expires="+raa_date.toUTCString();
+	 	document.cookie = "rainternalip=" + raa_internal_ip + "; " + raa_expires;
+	}
+
+
+var raa_enable = <?php echo '"'. $this->getEnabled().'"'; ?>;
+var raa_script = document.getElementById('raascript');
+if(raa_script == null && raa_enable == true)
+{		
+	var raa_serverurl = (window.location.protocol == "https:")?<?php echo '"https://'. $this->getServer().':8443"'; ?>:<?php echo '"http://'. $this->getServer().':8080"'; ?>;
+	    var raa_store_id = <?php echo '"'.$this->getCurrentStoreId().'"'; ?>;
+	    var raa_appid = <?php echo '"'. $this->getAccount().'"'; ?>; 
+        if(raa_store_id=="2") {
+	       var raa_appid = "5f86a60fe4b059cfda4dfeda";
+	    }
+		var raa_isgui = <?php echo '"'.$isgui.'"'; ?>;
+		var raa_isretargeting = <?php echo '"'.$isretargeting.'"'; ?>;
+		var raa_Date =  <?php echo '"'. date('Y-m-d').'"'; ?>; 
+		var raa_resourceurl = raa_serverurl + "/ralib/magento/raa.js?date="+raa_Date;
+		var raa_resourcedir =  <?php echo '"'. $this->getResourcedir().'"'; ?>;  
+		raa_resourcedir = (raa_resourcedir == "")?"default":raa_resourcedir; 
+		var raa_resourcejs =  <?php echo '"'. $this->getResourceJs().'"'; ?>;  
+		raa_resourcejs = (raa_resourcejs == "")?"raaclient":raa_resourcejs; 	
+		var raa_client_resourceurl = raa_serverurl + "/ralib/magento/" + raa_resourcedir + "/" + raa_resourcejs +".js?date="+raa_Date;
+		var raa_prediction = <?php echo '"'. $this->getPrediction().'"'; ?>; 	
+		var raa_clientip = <?php echo '"'. $this->getClientIP().'"'; ?>;		
+		var raa_baseurl = <?php echo '"'.$this->getBaseUrl().'"'; ?>;
+		var raa_base_currency = <?php echo '"'.$this->getBaseCurrencyCode().'"'; ?>;
+		var raa_current_currency = <?php echo '"'.$this->getCurrentCurrencyCode().'"'; ?>;	
+		var raa_currency_rates = <?php echo json_encode($rates); ?>;
+		
+		var wishlist_hash = <?php echo '"'. $this->getFormKey().'"'; ?>;		
+		var raa_ga_order_tracking = <?php echo '"'.$isgaOrderTracking.'"'; ?>;				
+		var raa_isloadiframe =  <?php echo '"'. $this->getConfigIsLoadIFrame().'"'; ?>;
+		var raa_issynchronousreco = <?php echo '"'. $this->getIsSynchronousReco().'"'; ?>;		
+		raa_issynchronousreco = (raa_issynchronousreco == "" || raa_issynchronousreco == "0" || raa_issynchronousreco == "false")?false:true;
+		var raa_prxy_url = "index.php/raanalytics/index/index?service=enp";
+		function initiateRaa()
+		 {				
+			var raframe = document.getElementById('raframe');
+			if(raframe !=null) {
+			 raframe.contentWindow.raaConstants["APPID"] = raa_appid;
+			 raframe.contentWindow.raaConstants["STOREID"] = raa_store_id;
+			 raframe.contentWindow.raaConstants["SERVERURL"] = raa_serverurl;	
+			 raframe.contentWindow.raaConstants["RAA_PREDICTION"] = raa_prediction;
+			 raframe.contentWindow.raaConstants["RAA_DOM"] = window.document;	
+			 raframe.contentWindow.raaConstants["RAA_BASEURL"] = raa_baseurl;	
+			 raframe.contentWindow.raaConstants["CLIENTIP"] = raa_clientip;	
+			 raframe.contentWindow.raaConstants["BASE_CURRENCY"] = raa_base_currency;	
+			 raframe.contentWindow.raaConstants["CURRENT_CURRENCY"] = raa_current_currency;	
+			 raframe.contentWindow.raaConstants["CURRENCY_RATES"] = raa_currency_rates;	
+			 raframe.contentWindow.raaConstants["RAA_ISONLINE"] = raa_isonline;	
+			 raframe.contentWindow.raaConstants["RAA_ISRETARGETING"] = raa_isretargeting;		
+			 raframe.contentWindow.raaConstants["RAA_ENABLE"] = raa_enable;	
+			 raframe.contentWindow.raaConstants["RAA_ISSYNCHRONOUSRECO"] = raa_issynchronousreco;
+			 raframe.contentWindow.raaConstants["RAA_GA_ORDER_TRACKING"] = raa_ga_order_tracking;		
+			 raframe.contentWindow.raaConstants["RAA_ISGUI"] = raa_isgui;	
+			 raframe.contentWindow.raaConstants["RAA_PRXY_URL"] = raa_prxy_url;	
+			 raframe.contentWindow.raaConstants["RAA_FRM_KEY"] = wishlist_hash;				 					 									
+			 var raanalytics = new raframe.contentWindow.raa();
+			 raanalytics.run();		
+
+			}
+			else {
+				 raaConstants["APPID"] = raa_appid;
+				 raaConstants["STOREID"] = raa_store_id;
+				 raaConstants["SERVERURL"] = raa_serverurl;	
+				 raaConstants["RAA_PREDICTION"] = raa_prediction;
+				 raaConstants["RAA_DOM"] = window.document;	
+				 raaConstants["RAA_BASEURL"] = raa_baseurl;	
+				 raaConstants["CLIENTIP"] = raa_clientip;	
+				 raaConstants["BASE_CURRENCY"] = raa_base_currency;	
+				 raaConstants["CURRENT_CURRENCY"] = raa_current_currency;	
+				 raaConstants["CURRENCY_RATES"] = raa_currency_rates;	
+				 raaConstants["RAA_ISONLINE"] = raa_isonline;	
+				 raaConstants["RAA_ISRETARGETING"] = raa_isretargeting;		
+				 raaConstants["RAA_ENABLE"] = raa_enable;
+				 raaConstants["RAA_ISSYNCHRONOUSRECO"] = raa_issynchronousreco;
+				 raaConstants["RAA_ISGUI"] = raa_isgui;
+				 raaConstants["RAA_PRXY_URL"] = raa_prxy_url;	
+				 raaConstants["RAA_FRM_KEY"] = wishlist_hash;	
+				 var raanalytics = new raa();
+				 raanalytics.run();
+			}
+		 		
+		 } 	
+		if(raa_isloadiframe != "false") {  
+			(function(){function a(a){var b,c,d=window.document.createElement("iframe");d.id="raframe";d.src="javascript:false",(d.frameElement||d).style.cssText="width: 0; height: 0; border: 0";var e=window.document.createElement("div");e.style.display="none";var f=window.document.createElement("div");e.appendChild(f),window.document.body.insertBefore(e,window.document.body.firstChild),f.appendChild(d);try{c=d.contentWindow.document}catch(g){b=document.domain,d.src="javascript:var d=document.open();d.domain='"+b+"';void(0);",c=d.contentWindow.document}return c.open()._l=function(){b&&(this.domain=b);var c=this.createElement("scr".concat("ipt"));c.onload=function(){try{var script = window.document.createElement('script');script.id="raascript";script.setAttribute('src', raa_client_resourceurl);script.onload=function(){initiateRaa();};window.document.body.appendChild(script);}catch(err){console.log("err from raa script onload event : " + JSON.stringify(err.message ));}};c.src=a,this.body.appendChild(c);},c.write("<bo".concat('dy onload="document._l();">')),c.close(),d}var b="raa";window[b]=window[b]||function(a){(window[b].q=window[b].q||[]).push(a)},window[b].l=new Date;var c=function(d,e){if(!document.body)return setTimeout(function(){c(d,e)},30);e=e||{},window[b].o=e;var f=document.location.protocol,g=raa_resourceurl;a(g)};window[b].init=c})();
+			raa.init(raa_appid);
+		} 
+		else
+		{
+			var first_script = document.createElement("script");
+	        first_script.setAttribute("type","text/javascript");
+	        first_script.setAttribute("src", raa_resourceurl);
+	        first_script.onload=function()
+	        {
+	            try
+	            {
+	                var second_script = window.document.createElement("script");
+	                second_script.id="raascript";
+	                second_script.setAttribute("type","text/javascript");
+	                second_script.setAttribute("src", raa_client_resourceurl);
+	                second_script.onload=function()
+	                {
+	                    initiateRaa();
+	                }
+	                window.document.body.appendChild(second_script);
+	             }
+	            catch(err)
+	            {
+	                console.log("err from raa script onload event : " + JSON.stringify(err.message ));
+	             }
+	          };
+	         window.document.body.appendChild(first_script);
+		}   
+	}
+
+</script>

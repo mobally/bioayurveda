@@ -1,0 +1,25 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609908642;s:6:"expire";i:1609912242;s:4:"tags";s:89:"10d_BLOCK_HTML,10d_CAT_P_554,10d_CAT_P,10d_CAT_P_551,10d_CAT_P_552,10d_CAT_P_553,10d_MAGE";}
+  <div class="swatch-opt-554" data-role="swatch-option-554"></div><script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option-554]": {
+            "Magento_Swatches/js/swatch-renderer": {
+                "selectorProduct": ".product-item-details",
+                "onlySwatches": true,
+                "enableControlLabel": false,
+                "numberToShow": 16,
+                "jsonConfig": {"attributes":{"138":{"id":"138","code":"unit","label":"Unit","options":[{"id":"5463","label":"15 ML","products":["551"]},{"id":"5464","label":"30 ML","products":["552"]},{"id":"5465","label":"60 ML","products":["553"]}],"position":"0"}},"template":"\u20b9<%- data.price %>","currencyFormat":"\u20b9%s","optionPrices":{"551":{"oldPrice":{"amount":299},"basePrice":{"amount":299},"finalPrice":{"amount":299},"tierPrices":[],"msrpPrice":{"amount":null}},"552":{"oldPrice":{"amount":549},"basePrice":{"amount":549},"finalPrice":{"amount":549},"tierPrices":[],"msrpPrice":{"amount":null}},"553":{"oldPrice":{"amount":899},"basePrice":{"amount":899},"finalPrice":{"amount":899},"tierPrices":[],"msrpPrice":{"amount":null}}},"priceFormat":{"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},"prices":{"oldPrice":{"amount":299},"basePrice":{"amount":299},"finalPrice":{"amount":299}},"productId":"554","chooseText":"Choose an Option...","images":[],"index":{"551":{"138":"5463"},"552":{"138":"5464"},"553":{"138":"5465"}},"preSelectedGallery":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/a\/n\/anti-inflammatory-protective-body-oil-01_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/a\/n\/anti-inflammatory-protective-body-oil-01_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/a\/n\/anti-inflammatory-protective-body-oil-01_1.jpg","position":"1","isMain":true,"gallery":{"2287":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/a\/n\/anti-inflammatory-protective-body-oil-01_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/a\/n\/anti-inflammatory-protective-body-oil-01_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/a\/n\/anti-inflammatory-protective-body-oil-01_1.jpg","position":"1","isMain":true},"2288":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/a\/n\/anti-inflammatory-protective-body-oil-02_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/a\/n\/anti-inflammatory-protective-body-oil-02_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/a\/n\/anti-inflammatory-protective-body-oil-02_1.jpg","position":"2","isMain":false},"2289":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/a\/n\/anti-inflammatory-protective-body-oil-03_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/a\/n\/anti-inflammatory-protective-body-oil-03_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/a\/n\/anti-inflammatory-protective-body-oil-03_1.jpg","position":"3","isMain":false}}}},
+                "jsonSwatchConfig": {"138":{"5463":{"type":"0","value":"15 ML","label":"15 ML"},"5464":{"type":"0","value":"30 ML","label":"30 ML"},"5465":{"type":"0","value":"60 ML","label":"60 ML"},"additional_data":"{\"swatch_input_type\":\"text\",\"update_product_preview_image\":\"1\",\"use_product_image_for_swatch\":0}"}},
+                "mediaCallback": "https\u003A\u002F\u002Fwww.bioayurveda.in\u002Fswatches\u002Fajax\u002Fmedia\u002F",
+                "jsonSwatchImageSizeConfig": {"swatchImage":{"width":22,"height":20},"swatchThumb":{"height":90,"width":110}},
+                "showTooltip": 1            }
+        }
+    }</script><script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-554]": {
+            "priceBox": {
+                "priceConfig": {
+                    "priceFormat": {"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},
+                    "prices": {"oldPrice":{"amount":299},"basePrice":{"amount":299},"finalPrice":{"amount":299}}                }
+            }
+        }
+    }</script>

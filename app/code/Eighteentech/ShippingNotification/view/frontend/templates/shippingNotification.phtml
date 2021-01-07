@@ -1,0 +1,104 @@
+<?php
+if($block->getEnabled()){?>
+   <div class="custom_shippingnotification">
+   <span class="close">close</span>
+	   <div class="notification-items">
+		    <?php 
+			echo $block->getLayout()
+					   ->createBlock('Magento\Cms\Block\Block')
+					   ->setBlockId($block->getNotificationBlock())
+					   ->toHtml();
+			?>
+	   </div>
+   </div>
+<script>
+require(['jquery', 'jquery/ui'         
+], function($){ 
+	 $(document).ready(function(){		 
+		 jQuery('.close').click(function(){
+			 jQuery('.custom_shippingnotification').hide();
+		 });
+	 });
+	 /*$(document).ready(function(){
+		 var expireTime="<?php echo (int)$block->getExpireTime();?>";
+		 var cookie_name = 'bioayurveda-shipping-cookies';
+		 var cookie_value = 'shipping-'+Date.now();		
+		if(getCookie(cookie_name)==''){			
+			setCookie(cookie_name,cookie_value,expireTime);            
+		}else{
+			 jQuery('.custom_shippingnotification').hide();
+	    }
+	 });*/
+	 
+	 
+ });
+        
+       function setCookie(cname, cvalue, exdays){
+          var d = new Date();
+          d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+          var expires = "expires="+d.toUTCString();
+          document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+       function  getCookie(cname){
+          var name = cname + "=";
+          var ca = document.cookie.split(';');
+          for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return "";
+
+        }
+</script>
+<script>
+			require([
+				'jquery',				
+				'owl_carousel'			
+			], function ($) {						    
+						  $(document).ready(function(){
+                $('.notification-slider').owlCarousel({
+                    loop:true,
+                    margin:0,
+                    responsiveClass:true,
+                    dots:0,
+                    loop:true,
+					autoplay:true,
+					autoplayTimeout:5000,
+					autoplayHoverPause:false,
+                    responsive:{
+                        0:{
+                            items:1,
+                            nav:true,
+                            autoHeight:true
+                        },
+                        400:{
+                            items:1,
+                            nav:true,
+                            autoHeight:true
+                        },
+                        600:{
+                            items:1,
+                            nav:true,
+                            autoHeight:true
+                        },
+                        1000:{
+                            items:1,
+                            nav:false,
+                            loop:true,
+                            autoplay:true,
+                            autoplayTimeout:5000,
+                            autoplayHoverPause:false,
+                            autoHeight:true
+                        }
+                    }
+                })
+            });
+	    });	
+</script>
+<?php } ?>

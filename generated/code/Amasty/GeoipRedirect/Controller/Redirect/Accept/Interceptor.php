@@ -1,0 +1,29 @@
+<?php
+namespace Amasty\GeoipRedirect\Controller\Redirect\Accept;
+
+/**
+ * Interceptor class for @see \Amasty\GeoipRedirect\Controller\Redirect\Accept
+ */
+class Interceptor extends \Amasty\GeoipRedirect\Controller\Redirect\Accept implements \Magento\Framework\Interception\InterceptorInterface
+{
+    use \Magento\Framework\Interception\Interceptor;
+
+    public function __construct(\Magento\Framework\App\Action\Context $context, \Magento\Framework\Session\SessionManagerInterface $sessionManager)
+    {
+        $this->___init();
+        parent::__construct($context, $sessionManager);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function dispatch(\Magento\Framework\App\RequestInterface $request)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'dispatch');
+        if (!$pluginInfo) {
+            return parent::dispatch($request);
+        } else {
+            return $this->___callPlugins('dispatch', func_get_args(), $pluginInfo);
+        }
+    }
+}

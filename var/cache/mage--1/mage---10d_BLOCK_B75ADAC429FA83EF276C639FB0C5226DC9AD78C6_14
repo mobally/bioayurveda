@@ -1,0 +1,25 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609908899;s:6:"expire";i:1609912499;s:4:"tags";s:85:"10d_BLOCK_HTML,10d_CAT_P_14,10d_CAT_P,10d_CAT_P_11,10d_CAT_P_12,10d_CAT_P_13,10d_MAGE";}
+  <div class="swatch-opt-14" data-role="swatch-option-14"></div><script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option-14]": {
+            "Magento_Swatches/js/swatch-renderer": {
+                "selectorProduct": ".product-item-details",
+                "onlySwatches": true,
+                "enableControlLabel": false,
+                "numberToShow": 16,
+                "jsonConfig": {"attributes":{"138":{"id":"138","code":"unit","label":"Unit","options":[{"id":"5469","label":"10 CAPSULES","products":["11"]},{"id":"5470","label":"40 CAPSULES","products":["12"]},{"id":"5471","label":"90 CAPSULES","products":["13"]}],"position":"0"}},"template":"$<%- data.price %>","currencyFormat":"$%s","optionPrices":{"11":{"oldPrice":{"amount":24},"basePrice":{"amount":24},"finalPrice":{"amount":24},"tierPrices":[],"msrpPrice":{"amount":null}},"12":{"oldPrice":{"amount":38},"basePrice":{"amount":38},"finalPrice":{"amount":38},"tierPrices":[],"msrpPrice":{"amount":null}},"13":{"oldPrice":{"amount":63},"basePrice":{"amount":63},"finalPrice":{"amount":63},"tierPrices":[],"msrpPrice":{"amount":null}}},"priceFormat":{"pattern":"$%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},"prices":{"oldPrice":{"amount":24},"basePrice":{"amount":24},"finalPrice":{"amount":24}},"productId":"14","chooseText":"Choose an Option...","images":[],"index":{"11":{"138":"5469"},"12":{"138":"5470"},"13":{"138":"5471"}}},
+                "jsonSwatchConfig": {"138":{"5469":{"type":"0","value":"10 CAPSULES","label":"10 CAPSULES"},"5470":{"type":"0","value":"40 CAPSULES","label":"40 CAPSULES"},"5471":{"type":"0","value":"90 CAPSULES","label":"90 CAPSULES"},"additional_data":"{\"swatch_input_type\":\"text\",\"update_product_preview_image\":\"1\",\"use_product_image_for_swatch\":0}"}},
+                "mediaCallback": "http\u003A\u002F\u002Fwww.bioayurveda.com\u002Fswatches\u002Fajax\u002Fmedia\u002F",
+                "jsonSwatchImageSizeConfig": {"swatchImage":{"width":22,"height":20},"swatchThumb":{"height":90,"width":110}},
+                "showTooltip": 1            }
+        }
+    }</script><script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-14]": {
+            "priceBox": {
+                "priceConfig": {
+                    "priceFormat": {"pattern":"$%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},
+                    "prices": {"oldPrice":{"amount":24},"basePrice":{"amount":24},"finalPrice":{"amount":24}}                }
+            }
+        }
+    }</script>

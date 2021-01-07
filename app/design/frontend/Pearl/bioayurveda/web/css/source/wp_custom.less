@@ -1,0 +1,192 @@
+.weltpixellighting {
+	color: black;
+}
+
+@import "custom/_custom.less";
+@import "custom/_header.less";
+@import "custom/_home.less";
+@import "custom/_footer.less";
+@import "custom/_menu-nav.less";
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600,700,900');
+
+ 
+
+
+@font-face {
+	font-family:"Alpaca Scarlett Demo";
+	src:url("../fonts/Alpaca_Scarlett_Demo.eot?") format("eot"),
+		url("../fonts/Alpaca_Scarlett_Demo.woff") format("woff"),
+		url("../fonts/Alpaca_Scarlett_Demo.ttf") format("truetype"),
+		url("../fonts/Alpaca_Scarlett_Demo.svg#AlpacaScarlettDemo") format("svg");
+	font-weight:normal;
+	font-style:normal;
+	font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bodoni MT';
+    src: url('../fonts/BodoniMT-Bold.eot');
+    src: url('../fonts/BodoniMT-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/BodoniMT-Bold.woff2') format('woff2'),
+        url('../fonts/BodoniMT-Bold.woff') format('woff'),
+        url('../fonts/BodoniMT-Bold.ttf') format('truetype'),
+        url('../fonts/BodoniMT-Bold.svg#BodoniMT-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bodoni MT';
+    src: url('../fonts/BodoniMT.eot');
+    src: url('../fonts/BodoniMT.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/BodoniMT.woff2') format('woff2'),
+        url('../fonts/BodoniMT.woff') format('woff'),
+        url('../fonts/BodoniMT.ttf') format('truetype'),
+        url('../fonts/BodoniMT.svg#BodoniMT') format('svg');
+    font-weight: normal;
+    font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bodoni MT';
+    src: url('../fonts/BodoniMT-Italic.eot');
+    src: url('../fonts/BodoniMT-Italic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/BodoniMT-Italic.woff2') format('woff2'),
+        url('../fonts/BodoniMT-Italic.woff') format('woff'),
+        url('../fonts/BodoniMT-Italic.ttf') format('truetype'),
+        url('../fonts/BodoniMT-Italic.svg#BodoniMT-Italic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+    font-family: 'BodoniXT';
+    src: url('../fonts/BodoniXT.eot');
+    src: url('../fonts/BodoniXT.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/BodoniXT.woff2') format('woff2'),
+        url('../fonts/BodoniXT.woff') format('woff'),
+        url('../fonts/BodoniXT.ttf') format('truetype'),
+        url('../fonts/BodoniXT.svg#BodoniXT') format('svg');
+    font-weight: 500;
+    font-style: normal;
+	font-display: swap;
+}
+@font-face{
+	font-family:'FontAwesome';src:url('../fonts/fontawesome-webfont.eot?v=4.6.3');
+	src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.6.3') format('embedded-opentype'),
+		url('../fonts/fontawesome-webfont.woff2?v=4.6.3') format('woff2'),
+		url('../fonts/fontawesome-webfont.woff?v=4.6.3') format('woff'),
+		url('../fonts/fontawesome-webfont.ttf?v=4.6.3') format('truetype'),
+		url('../fonts/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular') format('svg');
+	font-weight:normal;
+	font-style:normal;
+	font-display: swap;
+}
+
+@bodoni: 'Bodoni MT';
+@alpaca: 'Alpaca Scarlett Demo';
+@raleway: 'Raleway', sans-serif;
+
+@c_000: #000000;
+@c_ededed: #ededed;
+@c_ffffff: #ffffff;
+@c_666666: #666666;
+@c_f4f4f4: #f4f4f4;
+@c_cbcbcb: #cbcbcb;
+@c_b7b7b7: #b7b7b7;
+@c_ff0000: #ff0000;
+@c_f7f7f7: #f7f7f7;
+@c_cc7a46: #cc7a46;
+@c_d7d7d7: #d7d7d7;
+
+@c_d9d9d9: #d9d9d9; /* sidebar border*/
+
+@c_669900: #669900; /** green **/
+@c_cb5f26: #cb5f26;
+
+@color-orange-red1: @c_000;
+@color-orange-red2: @c_000; 
+@color-orange-red3: @c_000;
+@color-orange-red4: @c_000;
+
+@color-blue1: @c_000;
+@color-blue2: @c_000;
+@color-blue3: @c_000;
+@color-sky-blue1: @c_000;
+ 
+@f-w-n: normal;
+@f-w-4: 400;
+@f-w-5: 500;
+@f-w-6: 600;
+@f-w-7: 700;
+@f-w-9: 900;
+@f-w-b: bold;
+
+
+@fs-30: 30px;
+@fs-25: 25px;
+@fs-20: 20px;
+@fs-18: 18px;
+@fs-16: 16px;
+@fs-14: 14px;
+@fs-13: 13px;
+@fs-12: 12px;
+
+
+.placeholder(@rules) {
+    &::-webkit-input-placeholder {
+        @rules();
+    }
+    &:-moz-placeholder {
+        @rules();
+    }
+    &::-moz-placeholder {
+        @rules();
+    }
+    &:-ms-input-placeholder {
+        @rules();
+    }
+}
+
+.fullcontainer() {
+	width: 99.225vw;
+	 position: relative;
+	 margin-left: -50vw;
+	 left: 50%;
+}
+
+
+
+.transform-top (@translateY) {
+	-webkit-transform: (@translateY);
+	-moz-transform: (@translateY);
+	-ms-transform: (@translateY);
+	transform: (@translateY);
+}
+
+.transform-center (@translateX) {
+	-webkit-transform: (@translateX);
+	-moz-transform: (@translateX);
+	-ms-transform: (@translateX);
+	transform: (@translateX);
+}
+.center-top-transform (@translate) {
+    -moz-transform: @translate;
+    -ms-transform: @translate;
+    -webkit-transform: @translate;
+    transform: @translate;
+}
+
+.fontawesome-icon() {
+    display: inline-block;
+    font-family: FontAwesome;
+	font-size: 14px;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

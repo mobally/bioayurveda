@@ -1,0 +1,77 @@
+<?php
+if($block->getEnabled()){
+?>
+<div class="insta-feeds">
+<div class="container">
+	<div class="insta-follow-us-content">
+		<?php 
+			echo $block->getLayout()
+					   ->createBlock('Magento\Cms\Block\Block')
+					   ->setBlockId($block->getFollowBlock())
+					   ->toHtml();
+		 ?>	
+	</div>
+<div class="instagram-feed">
+<section class="content">
+  <div class="fullwidth">
+      <div class="instafeed-wrapper">       
+			<div id="instafeed" class="instafeed owl-carousel owl-theme"></div>        
+      </div>
+  </div>
+</section>
+</div>
+<script type="text/javascript">			
+require([
+		'jquery',
+		'Eighteentech_Instagram/js/instafeed.min',
+		'owl_carousel'						
+			], function ($, Instafeed) {
+  
+  var instaFeed = new Instafeed ({
+  get: 'user',
+  userId: '<?php echo $block->getUserId(); ?>',
+  clientId: '<?php echo $block->getClientId(); ?>',
+  target: 'instafeed',
+  accessToken: '<?php echo $block->getAccessToken(); ?>',
+  resolution: 'standard_resolution',
+  sortBy: 'most-recent',
+  limit: 20,
+  template: '<div class="col-md-12"><a href="{{link}}" data-var="{{orientation}}-{{width}}x{{height}}" target="_blank"><div class="insta-img"><img src="{{image}}" /></div><div class="img-backdrop-tutorial"></div></a></div>',
+  after: function() {
+
+						$('#instafeed').owlCarousel({
+							loop:true,
+                            margin:10,
+                            nav:false,
+                            dots:false,
+                            items:6,
+                            responsive:{
+                                    0:{
+                                     stagePadding: 50,
+                                        items:1
+                                    },
+                                    480:{
+                                     stagePadding: 50,
+                                        items:2
+                                    },
+                                    680:{
+                                     stagePadding: 50,
+                                        items:3
+                                    },
+                                    1000:{
+                                        items:6
+                                    }
+                            }
+						});
+					
+				 }
+   });
+    
+   instaFeed.run();
+   
+});
+	 
+</script>
+</div>
+</div>
+<?php } ?>

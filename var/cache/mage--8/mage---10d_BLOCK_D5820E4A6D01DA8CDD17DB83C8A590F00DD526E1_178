@@ -1,0 +1,25 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609908624;s:6:"expire";i:1609912224;s:4:"tags";s:89:"10d_BLOCK_HTML,10d_CAT_P_178,10d_CAT_P,10d_CAT_P_175,10d_CAT_P_176,10d_CAT_P_177,10d_MAGE";}
+  <div class="swatch-opt-178" data-role="swatch-option-178"></div><script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option-178]": {
+            "Magento_Swatches/js/swatch-renderer": {
+                "selectorProduct": ".product-item-details",
+                "onlySwatches": true,
+                "enableControlLabel": false,
+                "numberToShow": 16,
+                "jsonConfig": {"attributes":{"138":{"id":"138","code":"unit","label":"Unit","options":[{"id":"5463","label":"15 ML","products":["175"]},{"id":"5464","label":"30 ML","products":["176"]},{"id":"5465","label":"60 ML","products":["177"]}],"position":"0"}},"template":"\u20b9<%- data.price %>","currencyFormat":"\u20b9%s","optionPrices":{"175":{"oldPrice":{"amount":299},"basePrice":{"amount":299},"finalPrice":{"amount":299},"tierPrices":[],"msrpPrice":{"amount":null}},"176":{"oldPrice":{"amount":549},"basePrice":{"amount":549},"finalPrice":{"amount":549},"tierPrices":[],"msrpPrice":{"amount":null}},"177":{"oldPrice":{"amount":999},"basePrice":{"amount":999},"finalPrice":{"amount":999},"tierPrices":[],"msrpPrice":{"amount":null}}},"priceFormat":{"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},"prices":{"oldPrice":{"amount":299},"basePrice":{"amount":299},"finalPrice":{"amount":299}},"productId":"178","chooseText":"Choose an Option...","images":[],"index":{"175":{"138":"5463"},"176":{"138":"5464"},"177":{"138":"5465"}},"preSelectedGallery":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/s\/a\/sandalwood-spirit-surge-essential-face-oil-01_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/s\/a\/sandalwood-spirit-surge-essential-face-oil-01_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/s\/a\/sandalwood-spirit-surge-essential-face-oil-01_1.jpg","position":"1","isMain":true,"gallery":{"685":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/s\/a\/sandalwood-spirit-surge-essential-face-oil-01_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/s\/a\/sandalwood-spirit-surge-essential-face-oil-01_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/s\/a\/sandalwood-spirit-surge-essential-face-oil-01_1.jpg","position":"1","isMain":true},"686":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/s\/a\/sandalwood-spirit-surge-essential-face-oil-02_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/s\/a\/sandalwood-spirit-surge-essential-face-oil-02_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/s\/a\/sandalwood-spirit-surge-essential-face-oil-02_1.jpg","position":"2","isMain":false},"687":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/s\/a\/sandalwood-spirit-surge-essential-face-oil-03_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/s\/a\/sandalwood-spirit-surge-essential-face-oil-03_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/s\/a\/sandalwood-spirit-surge-essential-face-oil-03_1.jpg","position":"3","isMain":false}}}},
+                "jsonSwatchConfig": {"138":{"5463":{"type":"0","value":"15 ML","label":"15 ML"},"5464":{"type":"0","value":"30 ML","label":"30 ML"},"5465":{"type":"0","value":"60 ML","label":"60 ML"},"additional_data":"{\"swatch_input_type\":\"text\",\"update_product_preview_image\":\"1\",\"use_product_image_for_swatch\":0}"}},
+                "mediaCallback": "https\u003A\u002F\u002Fwww.bioayurveda.in\u002Fswatches\u002Fajax\u002Fmedia\u002F",
+                "jsonSwatchImageSizeConfig": {"swatchImage":{"width":22,"height":20},"swatchThumb":{"height":90,"width":110}},
+                "showTooltip": 1            }
+        }
+    }</script><script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-178]": {
+            "priceBox": {
+                "priceConfig": {
+                    "priceFormat": {"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},
+                    "prices": {"oldPrice":{"amount":299},"basePrice":{"amount":299},"finalPrice":{"amount":299}}                }
+            }
+        }
+    }</script>

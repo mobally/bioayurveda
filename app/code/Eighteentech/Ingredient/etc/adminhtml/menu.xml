@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Eighteentech_Ingredient::ingredient" title="Product Ingredient" resource="Eighteentech_Ingredient::ingredient" parent="Eighteentech_Core::core" module="Eighteentech_Ingredient" sortOrder="60"/>        
+        <add id="Eighteentech_Ingredient::ingredient_manage" title="Ingredient" module="Eighteentech_Ingredient" sortOrder="10" parent="Eighteentech_Ingredient::ingredient" action="ingredient/index/" resource="Eighteentech_Ingredient::ingredient_manage"/>        
+    </menu>
+</config>

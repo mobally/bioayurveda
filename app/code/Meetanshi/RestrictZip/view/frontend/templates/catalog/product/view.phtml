@@ -1,0 +1,89 @@
+<?php $currentProduct = $block->getCurrentProduct();?>
+
+<?php if ($block->getEnabled() && $currentProduct->getTypeId() != 'downloadable') : ?>
+    <div class="zip-code-content">
+        <span class="msg"></span>
+        <?php $helper = $this->helper('Meetanshi\RestrictZip\Helper\Data'); ?>
+
+        <?php if (trim($helper->getCheckerMsg())) : ?>
+            <p class="checker-msg"><?php /* @noEscape */ echo $helper->getCheckerMsg() ?></p>
+        <?php endif; ?>
+        <label for="meetanshi-zip" class="label"><?php /* @noEscape */ echo __('ZIP Code') ?></label>
+        <input id="meetanshi-zip" type="text" name="zip_code" value="" maxlength="10"
+               class="input-text zip-code-text required-entry"/>
+        <button id="zip-check" class="button check-zip action primary" type="button">
+            <span><span><?php /* @noEscape */ echo __('Check') ?></span></span></button>
+        <br>
+        <span class="blank"></span>
+    </div>
+    <style type="text/css">
+        .checker-msg {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .zip-code-content .label {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .blank {
+            color: #e02b27;
+            font-size: 12px
+        }
+
+        .msg p {
+            margin: 0;
+        }
+
+        .zip-code-text {
+            width: 100px !important;
+        }
+    </style>
+    <script type="text/javascript">
+        require(["jquery",
+            "jquery/ui"
+        ], function ($) {
+            'use strict';
+            $(document).ready(function () {
+                var customurl = "<?php /* @noEscape */ echo $this->getUrl() . 'restrictzip/restrictzip/index'?>";
+                $(document).on('click', '#zip-check', function () {
+                    $('.blank').find('p').remove();
+                    var code = $('#meetanshi-zip').val();
+                    if ($.trim(code)) {
+                        $.ajax({
+                            showLoader: true,
+                            url: customurl,
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                zipCode: code
+                            },
+                            complete: function (response) {
+                                $(".msg").find('div').remove();
+                                var msg = response.responseJSON.message;
+                                if (response.responseJSON.status == 'ok') {
+                                    var estTime = response.responseJSON.estimentedtime;
+                                    if ($.trim(estTime)) {
+                                        estTime = '<br><p><?php /* @noEscape */ echo __('Estimated Delivery Time: ')?>' + estTime + '</p>';
+                                    }
+                                    $(".msg").append('<div class="message success"><p>' + msg + estTime + '</p></div>');
+
+                                } else {
+                                    $(".msg").append('<div class="message error"><p>' + msg + '</p></div>');
+                                }
+                            }
+                        });
+                    } else {
+                        $(".msg").find('div').remove();
+                        $('.blank').find('p').remove();
+                        $(".blank").append('<p><?php /* @noEscape */ echo __('Please enter a ZIP code.')?></p>');
+                    }
+
+                });
+            });
+        });
+    </script>
+<?php endif; ?>

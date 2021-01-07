@@ -1,0 +1,12 @@
+.zip-code-content {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+.checker-msg {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 11px !important;
+}
+#meetanshi-zip {
+	border: 1px solid;
+}

@@ -1,0 +1,29 @@
+<?php
+namespace Magento\Vault\Block\Customer\AccountTokens;
+
+/**
+ * Interceptor class for @see \Magento\Vault\Block\Customer\AccountTokens
+ */
+class Interceptor extends \Magento\Vault\Block\Customer\AccountTokens implements \Magento\Framework\Interception\InterceptorInterface
+{
+    use \Magento\Framework\Interception\Interceptor;
+
+    public function __construct(\Magento\Framework\View\Element\Template\Context $context, \Magento\Vault\Model\CustomerTokenManagement $customerTokenManagement, array $data = [])
+    {
+        $this->___init();
+        parent::__construct($context, $customerTokenManagement, $data);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function toHtml()
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'toHtml');
+        if (!$pluginInfo) {
+            return parent::toHtml();
+        } else {
+            return $this->___callPlugins('toHtml', func_get_args(), $pluginInfo);
+        }
+    }
+}

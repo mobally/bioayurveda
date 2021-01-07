@@ -1,0 +1,13 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609908614;s:6:"expire";i:1609912214;s:4:"tags";s:98:"10d_BLOCK_HTML,10d_CAT_C,10d_CAT_C_3,10d_CAT_C_62,10d_CAT_C_70,10d_CAT_C_92,10d_CAT_C_125,10d_MAGE";}
+ <script>
+    window.screenM = '768';
+    window.widthThreshold = '767';
+    require(['jquery', 'navigationJs' ],
+        function   ($, navigationJs) {
+            $(document).ready(function() {
+                navigationJs.init();
+                $(window).on('resize', function() {
+                    navigationJs.init();
+                });
+            });
+        });</script>

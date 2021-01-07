@@ -1,0 +1,25 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609908549;s:6:"expire";i:1609912149;s:4:"tags";s:78:"10d_BLOCK_HTML,10d_CAT_P_1524,10d_CAT_P,10d_CAT_P_1522,10d_CAT_P_1523,10d_MAGE";}
+  <div class="swatch-opt-1524" data-role="swatch-option-1524"></div><script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option-1524]": {
+            "Magento_Swatches/js/swatch-renderer": {
+                "selectorProduct": ".product-item-details",
+                "onlySwatches": true,
+                "enableControlLabel": false,
+                "numberToShow": 16,
+                "jsonConfig": {"attributes":{"138":{"id":"138","code":"unit","label":"Unit","options":[{"id":"5467","label":"40 TABLETS","products":["1522"]},{"id":"5468","label":"90 TABLETS","products":["1523"]}],"position":"0"}},"template":"\u20b9<%- data.price %>","currencyFormat":"\u20b9%s","optionPrices":{"1522":{"oldPrice":{"amount":1199},"basePrice":{"amount":1199},"finalPrice":{"amount":1199},"tierPrices":[],"msrpPrice":{"amount":null}},"1523":{"oldPrice":{"amount":2699},"basePrice":{"amount":2699},"finalPrice":{"amount":2699},"tierPrices":[],"msrpPrice":{"amount":null}}},"priceFormat":{"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},"prices":{"oldPrice":{"amount":1199},"basePrice":{"amount":1199},"finalPrice":{"amount":1199}},"productId":"1524","chooseText":"Choose an Option...","images":[],"index":{"1522":{"138":"5467"},"1523":{"138":"5468"}},"preSelectedGallery":[]},
+                "jsonSwatchConfig": {"138":{"5467":{"type":"0","value":"40 TABLETS","label":"40 TABLETS"},"5468":{"type":"0","value":"90 TABLETS","label":"90 TABLETS"},"additional_data":"{\"swatch_input_type\":\"text\",\"update_product_preview_image\":\"1\",\"use_product_image_for_swatch\":0}"}},
+                "mediaCallback": "https\u003A\u002F\u002Fwww.bioayurveda.in\u002Fswatches\u002Fajax\u002Fmedia\u002F",
+                "jsonSwatchImageSizeConfig": {"swatchImage":{"width":22,"height":20},"swatchThumb":{"height":90,"width":110}},
+                "showTooltip": 1            }
+        }
+    }</script><script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-1524]": {
+            "priceBox": {
+                "priceConfig": {
+                    "priceFormat": {"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},
+                    "prices": {"oldPrice":{"amount":1199},"basePrice":{"amount":1199},"finalPrice":{"amount":1199}}                }
+            }
+        }
+    }</script>

@@ -1,0 +1,53 @@
+
+<?php
+/**
+ */
+/** @var \Retail\Analytics\Block\Order $this */
+$order = $this->getLastOrder();
+$orderItems = $this->getOrderItems($order);
+//$raaHelper = Mage::helper('retail_analytics');
+//$raaPriceHelper = Mage::helper('retail_analytics/price');
+
+?>
+
+<?php if (!empty($orderItems)): ?>
+<!-- Raa Order Tagging -->
+<div class="raa_purchase_order"  data-raa-id="7" style="display:none">
+ 	<div class="order_info">   
+ 	<span class="raa_product_id">-2</span>
+      <span class="raa_entity_id"><?php echo $order->getId(); ?></span>
+     <span class="raa_order_id"><?php echo $order->getId(); ?></span>
+     <span class="raa_increment_id"><?php echo $order->getIncrementId(); ?></span>
+     <span class="raa_coupon_code"><?php echo $order['coupon_code']; ?></span>
+     <span class="raa_sub_total"><?php echo $this->getFormattedPrice($order->getSubtotal()); ?></span>
+     <span class="raa_grand_total"><?php echo $this->getFormattedPrice($order->getGrandTotal()); ?></span>     
+      <span class="raa_base_subtotal"><?php echo $this->getFormattedPrice($order['base_subtotal']); ?></span>
+     <span class="raa_base_grand_total"><?php echo $this->getFormattedPrice($order['base_grand_total']); ?></span>     
+     <span class="raa_status"><?php echo $order->getStatus(); ?></span>
+      <span class="raa_created_at"><?php echo $order['created_at']; ?></span>  
+    </div>
+    <div class="customer">
+    	<span class="raa_customer_id"><?php echo $this->escapeHtml($order->getCustomerId()); ?></span>
+         <span class="raa_firstname"><?php echo $this->escapeHtml($order->getCustomerFirstname()); ?></span>
+        <span class="raa_lastname"><?php echo $this->escapeHtml($order->getCustomerLastname()); ?></span>
+        <span class="raa_email"><?php echo $this->escapeHtml($order->getCustomerEmail()); ?></span>
+        <span class="raa_phone"></span>
+    </div>  
+    <div class="products">
+        <?php foreach ($orderItems as $item): ?>         
+        <div class="line_item">
+            <span class="raa_product_id"><?php echo $item->productId; ?></span>  
+             <span class="raa_sku"><?php //echo $item->sku; ?></span>            
+            <span class="raa_quantity"><?php echo (int)$item->quantity; ?></span>
+            <span class="raa_name"><?php //echo $this->escapeHtml($item->name); ?></span>
+             <span class="raa_price"><?php echo $this->getFormattedPrice($item->price); ?></span>
+            <span class="raa_discount"><?php echo $this->getFormattedPrice($item->discount); ?></span>
+            <span class="raa_store_currency_code"><?php //echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?></span> 
+     		<span class="raa_base_currency_code"><?php //echo Mage::app()->getStore()->getBaseCurrencyCode(); ?></span>
+     		<span class="raa_producttypeid"><?php echo $item->producttypeid; ?></span>                   
+        </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<?php endif; ?>	
+

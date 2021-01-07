@@ -1,0 +1,25 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1609908615;s:6:"expire";i:1609912215;s:4:"tags";s:89:"10d_BLOCK_HTML,10d_CAT_P_194,10d_CAT_P,10d_CAT_P_191,10d_CAT_P_192,10d_CAT_P_193,10d_MAGE";}
+  <div class="swatch-opt-194" data-role="swatch-option-194"></div><script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option-194]": {
+            "Magento_Swatches/js/swatch-renderer": {
+                "selectorProduct": ".product-item-details",
+                "onlySwatches": true,
+                "enableControlLabel": false,
+                "numberToShow": 16,
+                "jsonConfig": {"attributes":{"138":{"id":"138","code":"unit","label":"Unit","options":[{"id":"5463","label":"15 ML","products":["191"]},{"id":"5464","label":"30 ML","products":["192"]},{"id":"5465","label":"60 ML","products":["193"]}],"position":"0"}},"template":"\u20b9<%- data.price %>","currencyFormat":"\u20b9%s","optionPrices":{"191":{"oldPrice":{"amount":299},"basePrice":{"amount":299},"finalPrice":{"amount":299},"tierPrices":[],"msrpPrice":{"amount":null}},"192":{"oldPrice":{"amount":549},"basePrice":{"amount":549},"finalPrice":{"amount":549},"tierPrices":[],"msrpPrice":{"amount":null}},"193":{"oldPrice":{"amount":899},"basePrice":{"amount":899},"finalPrice":{"amount":899},"tierPrices":[],"msrpPrice":{"amount":null}}},"priceFormat":{"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},"prices":{"oldPrice":{"amount":299},"basePrice":{"amount":299},"finalPrice":{"amount":299}},"productId":"194","chooseText":"Choose an Option...","images":[],"index":{"191":{"138":"5463"},"192":{"138":"5464"},"193":{"138":"5465"}},"preSelectedGallery":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/t\/e\/tea-tree-power-thrust-essential-face-oil-01_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/t\/e\/tea-tree-power-thrust-essential-face-oil-01_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/t\/e\/tea-tree-power-thrust-essential-face-oil-01_1.jpg","position":"1","isMain":true,"gallery":{"742":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/t\/e\/tea-tree-power-thrust-essential-face-oil-01_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/t\/e\/tea-tree-power-thrust-essential-face-oil-01_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/t\/e\/tea-tree-power-thrust-essential-face-oil-01_1.jpg","position":"1","isMain":true},"743":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/t\/e\/tea-tree-power-thrust-essential-face-oil-02_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/t\/e\/tea-tree-power-thrust-essential-face-oil-02_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/t\/e\/tea-tree-power-thrust-essential-face-oil-02_1.jpg","position":"2","isMain":false},"744":{"large":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/59950813c5967cfe48106acf7a4ac8d6\/t\/e\/tea-tree-power-thrust-essential-face-oil-03_1.jpg","medium":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/98f33e413873698a7686a03f47b1d5e3\/t\/e\/tea-tree-power-thrust-essential-face-oil-03_1.jpg","small":"https:\/\/www.bioayurveda.in\/pub\/media\/catalog\/product\/cache\/92249553bf5d6b17cea276eb6564d0cb\/t\/e\/tea-tree-power-thrust-essential-face-oil-03_1.jpg","position":"3","isMain":false}}}},
+                "jsonSwatchConfig": {"138":{"5463":{"type":"0","value":"15 ML","label":"15 ML"},"5464":{"type":"0","value":"30 ML","label":"30 ML"},"5465":{"type":"0","value":"60 ML","label":"60 ML"},"additional_data":"{\"swatch_input_type\":\"text\",\"update_product_preview_image\":\"1\",\"use_product_image_for_swatch\":0}"}},
+                "mediaCallback": "https\u003A\u002F\u002Fwww.bioayurveda.in\u002Fswatches\u002Fajax\u002Fmedia\u002F",
+                "jsonSwatchImageSizeConfig": {"swatchImage":{"width":22,"height":20},"swatchThumb":{"height":90,"width":110}},
+                "showTooltip": 1            }
+        }
+    }</script><script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-194]": {
+            "priceBox": {
+                "priceConfig": {
+                    "priceFormat": {"pattern":"\u20b9%s","precision":2,"requiredPrecision":2,"decimalSymbol":".","groupSymbol":",","groupLength":3,"integerRequired":false},
+                    "prices": {"oldPrice":{"amount":299},"basePrice":{"amount":299},"finalPrice":{"amount":299}}                }
+            }
+        }
+    }</script>
